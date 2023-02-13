@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import '../assets/css/to-do-display.css';
 
 
 function Display() {

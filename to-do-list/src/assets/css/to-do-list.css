@@ -1,0 +1,32 @@
+.list-style{
+    color: aliceblue;
+    font-size: 20px;
+    list-style-type: square;
+    display: flex;
+    border-bottom: 1px solid  rgb(70, 70, 80);
+   
+  
+}
+.fa-check{
+    flex:1;
+    justify-content: center;
+    display: flex;
+ 
+}
+.fa-times{
+    justify-content: center;
+    display: flex;
+flex:1;
+
+}
+.list-text{
+flex:10;
+
+}
+.fa-check:hover{
+    color: green;
+}
+.fa-times:hover{
+    color: red;
+}
+  

@@ -3,8 +3,8 @@ import Display from './components/to-do-display';
 
 function App() {
   return (
-    <Display/>
-       );
+    <Display />
+  );
 }
 
 export default App;

@@ -16,17 +16,17 @@ class Display extends React.Component<{}, { data: string; items: string[] }> {
   render() {
     const itemEvent = (event: React.ChangeEvent<HTMLInputElement>) => {
       this.setState({
-       data: event.target.value,
+        data: event.target.value,
       });
     };
 
     const addItem = () => {
-        if (!this.state.data.length) {
-            return;
-          }
+      if (!this.state.data.length) {
+        return;
+      }
       this.setState({
         items: [...this.state.items, this.state.data],
-        data:""
+        data: "",
       });
     };
 
@@ -54,10 +54,9 @@ class Display extends React.Component<{}, { data: string; items: string[] }> {
 
             <div className="show-list">
               <ul>
-                {this.state.items.map((value:string, i:React.Key) => {
-                  return (<ToDoList text={value} />);
+                {this.state.items.map((value: string, i: React.Key) => {
+                  return <ToDoList text={value} />;
                 })}
-                
               </ul>
             </div>
           </div>

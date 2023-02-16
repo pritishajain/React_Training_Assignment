@@ -29,7 +29,8 @@ h1 {
 }
 .add-list {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  
 }
 .show-list {
   margin: 30px;
@@ -45,18 +46,21 @@ input[type="text"] {
   padding: 10px;
   outline: none;
   background-color: rgb(57, 57, 78);
-  width: 400px;
+  /* width: 400px; */
+  flex: 12;
   border-radius: 8px;
   color: aliceblue;
+  margin-right: 20px;
 }
 #Add {
   background-color: rgb(57, 57, 78);
   color: white;
-  font-size: 15px;
+  font-size: 20px;
   border: none;
   padding: 10px;
   border: 2px solid rgb(70, 70, 80);
   outline: none;
+  flex:1;
   border-radius: 8px;
 }
 #Add:active {

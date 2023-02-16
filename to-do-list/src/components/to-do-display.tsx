@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import "../assets/css/to-do-display.css";
 import ToDoList from "./to-do-list";
+import {heading} from "../assets/constants/Constant";
+import {Placeholder} from "../assets/constants/Constant";
+
 
 class Display extends React.Component<{}, { data: string; items: string[] }> {
   constructor(props: string) {
@@ -29,20 +31,25 @@ class Display extends React.Component<{}, { data: string; items: string[] }> {
         data: "",
       });
     };
+    const removeItem = (itemid: React.Key) => {
+       
+      this.setState({
+        items: [...this.state.items].filter((element,index:React.Key) => itemid!== index)
+      });
+    };
 
     return (
       <>
         <div className="main-div">
           <div className="head">
-            <h1>ToDo List</h1>
-            {/*   <i className="fa fa-trash" aria-hidden="true"></i> */}
+          <h1>{heading}</h1>
           </div>
 
           <div className="upper-container">
             <div className="add-list">
               <input
                 type="text"
-                placeholder="Add a Item"
+                placeholder={Placeholder}
                 value={this.state.data}
                 id="input-text"
                 onChange={itemEvent}
@@ -54,8 +61,14 @@ class Display extends React.Component<{}, { data: string; items: string[] }> {
 
             <div className="show-list">
               <ul>
-                {this.state.items.map((value: string, i: React.Key) => {
-                  return <ToDoList text={value} />;
+                {this.state.items.map((value: string, iterator: React.Key) => {
+                  return (
+                    <ToDoList
+                      text={value}
+                      itemid={iterator}
+                      onSelect={removeItem}
+                    />
+                  );
                 })}
               </ul>
             </div>

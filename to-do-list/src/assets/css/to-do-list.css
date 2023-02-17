@@ -21,8 +21,12 @@ flex:1;
 }
 .list-text{
 flex:10;
+font-family: 'Dancing Script', cursive;
+font-size: 30px;
+font-weight: 400;
 
 }
+
 .fa-check:hover{
     color: green;
 }

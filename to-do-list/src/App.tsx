@@ -1,9 +1,9 @@
 import React from 'react';
-import Display from './components/to-do-display';
+import TodoDisplay from './components/to-do-display';
 
 function App() {
   return (
-    <Display />
+    <TodoDisplay />
   );
 }
 

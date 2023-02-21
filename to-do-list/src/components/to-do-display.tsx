@@ -4,7 +4,6 @@ import ToDoList from "./to-do-list";
 import { heading } from "../assets/constants/Constant";
 import { Placeholder } from "../assets/constants/Constant";
 
-
 class TodoDisplay extends React.Component<
   {},
   {
@@ -13,6 +12,7 @@ class TodoDisplay extends React.Component<
     completed: String[];
     added: String[];
     active: String[];
+   
   }
 > {
   constructor(props: string) {
@@ -24,6 +24,7 @@ class TodoDisplay extends React.Component<
       completed: [],
       added: [],
       active: [],
+      
     };
   }
 
@@ -47,30 +48,62 @@ class TodoDisplay extends React.Component<
       });
     };
 
-    const removeItem = (itemid: React.Key, text: string) => {
+    const removeItem = (itemid: React.Key, text: string,e: any) => {
+      e.target.parentElement.parentElement.children[0].style.textDecoration="none";
+      e.target.parentElement.parentElement.children[0].style.backgroundColor="rgb(19, 19, 56)"; 
+      
       this.setState({
         items: [...this.state.items].filter(
-          (element, index: React.Key) => itemid !== index
+          (element, index) => itemid !== index
         ),
-        completed: [...this.state.completed, this.state.items[Number(itemid)]],
-        active: [...this.state.active].filter((element) => text !== element),
+        completed: [...this.state.completed, text],
+        active: [...this.state.active].filter(
+          (element, index) => itemid !== index
+        ),
       });
+      
+      
     };
 
     const removeAllItems = () => {
       this.setState({
         items: [],
+        active:[]
       });
+
     };
 
-    const activeItem = (text: String) => {
-      this.setState({
-        active: [...this.state.active].filter((element) => text !== element),
-      });
-      console.log(this.state.active);
+    const activeItem = (itemid: React.Key, text: string ,e:any) =>{
+     
+     this.state.active.map((element,index)=>{
+  
+        if(itemid === index){
+          if(e.target.parentElement.parentElement.children[0].style.textDecoration==="line-through")
+          {
+            e.target.parentElement.parentElement.children[0].style.textDecoration="none";
+            e.target.parentElement.parentElement.children[0].style.backgroundColor="rgb(19, 19, 56)";
+            this.setState({
+              active:[...this.state.active,text]
+            });
+
+          }
+          else
+          {
+            e.target.parentElement.parentElement.children[0].style.textDecoration="line-through"
+            e.target.parentElement.parentElement.children[0].style.backgroundColor="green"
+            this.setState({
+              active: [...this.state.active].filter((element,index) => itemid !== index),
+            }); 
+          }
+        }
+        
+      })
+   
     };
+  
+    
     return (
-      <>
+      <React.Fragment>
         <div className="main-div">
           <div className="head">
             <h1>{heading}</h1>
@@ -99,6 +132,7 @@ class TodoDisplay extends React.Component<
                       itemid={iterator}
                       onSelect={removeItem}
                       onChange={activeItem}
+                      
                     />
                   );
                 })}
@@ -107,16 +141,16 @@ class TodoDisplay extends React.Component<
           </div>
           <div className="lower-container">
             <div className="active">Active : {this.state.active.length}</div>
-            <div className="added">Added : {this.state.added.length}</div>
-            <div className="completed">
+            <div className="active">Added : {this.state.added.length}</div>
+            <div className="active">
               Completed : {this.state.completed.length}
             </div>
-            <div className="remove" onClick={removeAllItems}>
+            <div className="active" onClick={removeAllItems}>
               Remove All
             </div>
           </div>
         </div>
-      </>
+      </React.Fragment>
     );
   }
 }

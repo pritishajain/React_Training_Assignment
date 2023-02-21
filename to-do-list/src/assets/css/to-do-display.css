@@ -73,11 +73,15 @@ input[type="text"] {
 }
 
 .lower-container {
-  text-align: center;
+ 
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   padding: 20px;
+  width: 70%;
+  margin: auto;
+
 }
+
 .active,
 .added,
 .completed,
@@ -85,11 +89,11 @@ input[type="text"] {
   padding: 30px;
   text-align: center;
   border: 2px solid rgb(70, 70, 80);
-  margin: 30px;
-  font-size: 25px;
+  margin: 30px; 
+  font-size: 25px; 
   background-color: rgb(48, 48, 59);
   border-radius: 10px;
-  font-weight: 500;
+  font-weight: 500; 
   color: aliceblue;
   font-family: 'Julee', cursive;
 }
@@ -122,3 +126,19 @@ input[type="text"] {
   transform: scale(1.2); 
   background-color: #232c3a;
 }
+
+@media screen and(max-width: 660x) {
+  .active,
+  .added,
+  .completed,
+  .remove {
+    font-size: 5px;
+    padding: 20px;
+  }
+  
+  .lower-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+} 

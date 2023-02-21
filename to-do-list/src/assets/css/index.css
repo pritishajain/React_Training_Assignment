@@ -11,15 +11,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-@media screen and(max-width:860px) {
-  .active,
-  .added,
-  .completed,
-  .remove {
-    font-size: 5px;
-    padding: 20px;
-  }
-  .lower-container {
-    flex-direction: column;
-  }
-}
+

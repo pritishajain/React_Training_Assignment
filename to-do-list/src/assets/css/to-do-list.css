@@ -4,7 +4,8 @@
     list-style-type: square;
     display: flex;
     border-bottom: 1px solid  rgb(70, 70, 80);
-   
+    
+    margin:10px;
   
 }
 .fa-check{
@@ -20,6 +21,7 @@ flex:1;
 
 }
 .list-text{
+border-radius: 10px;
 flex:10;
 font-family: 'Dancing Script', cursive;
 font-size: 30px;

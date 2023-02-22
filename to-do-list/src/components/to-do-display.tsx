@@ -12,7 +12,6 @@ class TodoDisplay extends React.Component<
     completed: String[];
     added: String[];
     active: String[];
-   
   }
 > {
   constructor(props: string) {
@@ -100,8 +99,6 @@ class TodoDisplay extends React.Component<
       })
    
     };
-  
-    
     return (
       <React.Fragment>
         <div className="main-div">
@@ -132,8 +129,7 @@ class TodoDisplay extends React.Component<
                       itemid={iterator}
                       onSelect={removeItem}
                       onChange={activeItem}
-                      
-                    />
+                      />
                   );
                 })}
               </ul>

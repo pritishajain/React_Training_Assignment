@@ -1,38 +1,31 @@
-.list-style{
-    color: aliceblue;
-    font-size: 20px;
-    list-style-type: square;
-    display: flex;
-    border-bottom: 1px solid  rgb(70, 70, 80);
-    
-    margin:10px;
-  
+.list-style {
+  color: aliceblue;
+  font-size: 20px;
+  list-style-type: square;
+  display: flex;
+  border-bottom: 1px solid rgb(70, 70, 80);
+  margin: 10px;
 }
-.fa-check{
-    flex:1;
-    justify-content: center;
-    display: flex;
- 
+.fa-check {
+  flex: 1;
+  justify-content: center;
+  display: flex;
 }
-.fa-times{
-    justify-content: center;
-    display: flex;
-flex:1;
-
+.fa-times {
+  justify-content: center;
+  display: flex;
+  flex: 1;
 }
-.list-text{
-border-radius: 10px;
-flex:10;
-font-family: 'Dancing Script', cursive;
-font-size: 30px;
-font-weight: 400;
-
+.list-text {
+  border-radius: 10px;
+  flex: 10;
+  font-family: "Julee", cursive;
+  font-size: 30px;
+  font-weight: 400;
 }
-
-.fa-check:hover{
-    color: green;
+.fa-check:hover {
+  color: green;
 }
-.fa-times:hover{
-    color: red;
+.fa-times:hover {
+  color: red;
 }
-  

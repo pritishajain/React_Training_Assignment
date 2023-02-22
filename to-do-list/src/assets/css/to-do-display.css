@@ -3,7 +3,7 @@
   text-align: center;
   font-size: 20px;
 }
-body{
+body {
   background-color: rgb(19, 19, 56);
 }
 h1 {
@@ -27,13 +27,12 @@ h1 {
   padding: 20px;
   border-bottom: 2px solid rgb(70, 70, 80);
   height: 45vh;
-  width: 45%; 
+  width: 45%;
   margin: auto;
 }
 .add-list {
   display: flex;
   justify-content: space-between;
-  
 }
 .show-list {
   margin: 30px;
@@ -42,7 +41,6 @@ h1 {
 .show-list::-webkit-scrollbar {
   display: none;
 }
-
 input[type="text"] {
   text-align: center;
   border: 2px solid rgb(70, 70, 80);
@@ -50,7 +48,6 @@ input[type="text"] {
   padding: 10px;
   outline: none;
   background-color: rgb(57, 57, 78);
-  /* width: 400px; */
   flex: 12;
   border-radius: 8px;
   color: aliceblue;
@@ -64,24 +61,20 @@ input[type="text"] {
   padding: 10px;
   border: 2px solid rgb(70, 70, 80);
   outline: none;
-  flex:1;
+  flex: 1;
   border-radius: 8px;
 }
 #Add:active {
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-
 .lower-container {
- 
   display: flex;
   justify-content: space-around;
   padding: 20px;
   width: 70%;
   margin: auto;
-
 }
-
 .active,
 .added,
 .completed,
@@ -89,44 +82,42 @@ input[type="text"] {
   padding: 30px;
   text-align: center;
   border: 2px solid rgb(70, 70, 80);
-  margin: 30px; 
-  font-size: 25px; 
+  margin: 30px;
+  font-size: 25px;
   background-color: rgb(48, 48, 59);
   border-radius: 10px;
-  font-weight: 500; 
+  font-weight: 500;
   color: aliceblue;
-  font-family: 'Julee', cursive;
+  font-family: "Julee", cursive;
 }
-.active:hover{
+.active:hover {
   cursor: pointer;
-  -ms-transform: scale(1.2); 
-  -webkit-transform: scale(1.2); 
-  transform: scale(1.2); 
-  background-color: #232c3a;
-  
-}
-.added:hover{
-  cursor: pointer;
-  -ms-transform: scale(1.2); 
-  -webkit-transform: scale(1.2); 
-  transform: scale(1.2); 
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
   background-color: #232c3a;
 }
-.completed:hover{
+.added:hover {
   cursor: pointer;
-  -ms-transform: scale(1.2); 
-  -webkit-transform: scale(1.2); 
-  transform: scale(1.2); 
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
   background-color: #232c3a;
 }
-.remove:hover{
+.completed:hover {
   cursor: pointer;
-  -ms-transform: scale(1.2); 
-  -webkit-transform: scale(1.2); 
-  transform: scale(1.2); 
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
   background-color: #232c3a;
 }
-
+.remove:hover {
+  cursor: pointer;
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  background-color: #232c3a;
+}
 @media screen and(max-width: 660x) {
   .active,
   .added,
@@ -135,10 +126,8 @@ input[type="text"] {
     font-size: 5px;
     padding: 20px;
   }
-  
   .lower-container {
     display: flex;
     flex-direction: column;
   }
-  
-} 
+}

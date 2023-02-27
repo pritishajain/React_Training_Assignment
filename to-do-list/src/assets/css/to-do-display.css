@@ -1,114 +1,133 @@
-.main-div{
+.head {
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+}
+body {
+  background-color: rgb(19, 19, 56);
+}
+h1 {
+  margin: auto;
+  background-color: rgb(48, 48, 59);
+  width: fit-content;
+  padding: 20px;
+  border-bottom-right-radius: 30px;
+  border-top-left-radius: 30px;
+  color: aliceblue;
+  font-family: "Shantell Sans rev=1";
+}
+.main-div {
+  margin: auto;
   width: 100%;
-  background-color: rgb(206, 229, 250) ;
-  height:900px;
 }
-.head{
-  background-color: #8566aa;
+.upper-container {
   display: flex;
-  padding: 10px;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  border-bottom: 2px solid rgb(70, 70, 80);
+  height: 45vh;
+  width: 45%;
+  margin: auto;
 }
-.head h1{
-  flex:17;
-}
-.fa{
-flex: 2;  
-font-size: 40px;
-padding-left: 20px;
-border: none;
-box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.3);
-color: red;
-}
-h1{
-  color: white;
-  /* padding: 6px 0 2px 0; */
-  text-align: center;
-  font-weight: 500;
-  box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.3);
-}
-.container{
+.add-list {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 30px;
- 
+  justify-content: space-between;
 }
-.add-list{
-  background-color: white;
-  border:none;
-  border-radius: 15px;
-  box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.3);
-  padding: 15px;
-  }
-input{
-  text-align: center;
-  border: none;
-  font-size: 15px;
-  border-bottom: 2px solid  #8566aa;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding: 10px;
-  outline:none;
-  color: #8566aa;
-}
-#Add{
-  border-radius: 50%;
-  background-color: #8566aa;
-  color: white;
-  font-size: 30px;
-  border: none;
-  padding-left:10px;
-  padding-right: 10px;
-  border-color: transparent;
-  box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.3);
-  outline: none;
-}
-#Add:hover{
-  background-color: green;
-}
-#remove{
-  border-radius: 20px;
-  background-color: #8566aa;
-  color: white;
-  font-size: 30px;
-  border: none;
- padding: 20px;
-  border-color: transparent;
-  box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.3);
-  outline: none;
-}
-.show-list{
-
-  background-color: white;
-  border:none;
-  border-radius: 15px;
-  box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.3);
-  height: 50vh;
-  width: 300px;
+.show-list {
+  margin: 30px;
   overflow: scroll;
-  
- 
 }
-.show-list h1{
-  background-color: #8566aa;
-  color: white;
-  /* padding: 6px 0 2px 0; */
-  text-align: center;
-  font-weight: 500;
-  box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.3);
-
-}
-.show-list::-webkit-scrollbar{
+.show-list::-webkit-scrollbar {
   display: none;
 }
-@media screen and (max-width:950px)
-{
-  .container{
+input[type="text"] {
+  text-align: center;
+  border: 2px solid rgb(70, 70, 80);
+  font-size: 15px;
+  padding: 10px;
+  outline: none;
+  background-color: rgb(57, 57, 78);
+  flex: 12;
+  border-radius: 8px;
+  color: aliceblue;
+  margin-right: 20px;
+}
+#Add {
+  background-color: rgb(57, 57, 78);
+  color: white;
+  font-size: 20px;
+  border: none;
+  padding: 10px;
+  border: 2px solid rgb(70, 70, 80);
+  outline: none;
+  flex: 1;
+  border-radius: 8px;
+}
+#Add:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.lower-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  width: 70%;
+  margin: auto;
+}
+.active,
+.added,
+.completed,
+.remove {
+  padding: 30px;
+  text-align: center;
+  border: 2px solid rgb(70, 70, 80);
+  margin: 30px;
+  font-size: 25px;
+  background-color: rgb(48, 48, 59);
+  border-radius: 10px;
+  font-weight: 500;
+  color: aliceblue;
+  font-family: "Julee", cursive;
+}
+.active:hover {
+  cursor: pointer;
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  background-color: #232c3a;
+}
+.added:hover {
+  cursor: pointer;
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  background-color: #232c3a;
+}
+.completed:hover {
+  cursor: pointer;
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  background-color: #232c3a;
+}
+.remove:hover {
+  cursor: pointer;
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  background-color: #232c3a;
+}
+@media screen and(max-width: 660x) {
+  .active,
+  .added,
+  .completed,
+  .remove {
+    font-size: 5px;
+    padding: 20px;
+  }
+  .lower-container {
+    display: flex;
     flex-direction: column;
   }
-  .add-list , .show-list, .remove-list{
-   margin: 20px;
-  }
-
 }

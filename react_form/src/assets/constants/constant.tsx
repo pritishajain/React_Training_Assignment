@@ -1,0 +1,13 @@
+export const heading:string = 'FITSMASH';
+export const details:string = 'Personal Details';
+export const name:string='Name:';
+export const age:string='Age:';
+export const contact:string= 'Contact no:';
+export const email:string='Email Id:';
+export const description:string='Want to become aur member?Fill the form below , we will contact you,shortly to complete your registration process.'
+export const address:string='Address:';
+export const street:string='Street no:';
+export const city:string='city:';
+export const state:string='state:';
+export const pincode:string='Pincode:'
+export const disability:string='Do you have any disability?';

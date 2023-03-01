@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "../assets/css/Form.css";
-import { heading, details,name,age,contact,email,city,description,address,street,disability,state,pincode } from "../assets/constants/constant";
+import {Heading, Details, Name, Age, Contact, Email, City, Description, Address, Street, Disability, State, Pincode, Star ,Yes ,No} from "../assets/constants/constant";
 
 const Form = () => {
   const nameInput = useRef<HTMLInputElement>(null);
@@ -10,18 +10,20 @@ const Form = () => {
       nameInput.current.focus();
     }
   }, []);
+
   return (
     <React.Fragment>
       <div className="container">
         <form>
-          <h1>{heading}</h1>
+          <h1>{Heading}</h1>
+
+          <p>{Description}</p>
+
+          <h3>{Details}</h3>
+
           <p>
-            Want to become aur member?Fill the form below , we will contact you
-            shortly to complete your registration process.
-          </p>
-          <h3>{details}</h3>
-          <p>
-            {name}<span className="star">*</span>
+            {Name}
+            <span className="star">{Star}</span>
             <input
               type="text"
               name="Name"
@@ -30,12 +32,15 @@ const Form = () => {
               ref={nameInput}
             />
           </p>
+
           <p>
-            {age} <span className="star">*</span>{" "}
+            {Age} <span className="star">{Star}</span>{" "}
             <input type="number" name="Age" placeholder="eg:20" required />
           </p>
+
           <p>
-            {contact}<span className="star">*</span>
+            {Contact}
+            <span className="star">{Star}</span>
             <input
               type="number"
               name="Contact no"
@@ -43,12 +48,17 @@ const Form = () => {
               required
             />
           </p>
+
           <p>
-            {email}<span className="star">*</span>
+            {Email}
+            <span className="star">{Star}</span>
             <input type="email" name="email" placeholder="abc@gmail.com" />
           </p>
+
           <p>
-            {address}<span className="star">*</span> Street no:
+            {Address}
+            <span className="star">{Star}</span>
+            {Street}
             <input
               type="text"
               name="street no."
@@ -62,11 +72,11 @@ const Form = () => {
               required
             />
             <br />
-            {city}
+            {City}
             <input type="text" name="city" required />
-            {state}
+            {State}
             <input type="text" name="state" required />
-            {pincode}
+            {Pincode}
             <input
               type="number"
               name="Pincode"
@@ -74,13 +84,23 @@ const Form = () => {
               required
             />
           </p>
+
           <p>
-            {disability}<span className="star">*</span>yes{" "}
-            <input type="radio" name="disablity" required />
-            No <input type="radio" name="disablity" required />
-            <br/>
+            {Disability}
+            <span className="star">{Star}</span>
+            <div className="disability">
+               {Yes}
+               <input type="radio" name="disablity" required />
+            </div>
+            <div className="disability">
+               {No}
+               <input type="radio" name="disablity" required />
+            </div>
+            
+            <br />
             <input type="submit" name="submit" />
           </p>
+
         </form>
       </div>
     </React.Fragment>

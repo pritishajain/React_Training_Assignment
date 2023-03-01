@@ -13,5 +13,5 @@ export const State: string = "State:";
 export const Pincode: string = "Pincode:";
 export const Disability: string = "Do you have any disability? ";
 export const Star: string = "*";
-export const Yes:string="Yes";
-export const No:string="No";
+export const Yes: string = "Yes";
+export const No: string = "No";

@@ -16,9 +16,7 @@ const Form = () => {
       <div className="container">
         <form>
           <h1>{Heading}</h1>
-
           <p>{Description}</p>
-
           <h3>{Details}</h3>
 
           <p>

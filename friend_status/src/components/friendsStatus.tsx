@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "../assets/css/FriendsStatus.css";
 import useOnline from "../hooks/useOnline";
-import { online, Away } from "../assets/constants/constant";
-import { Audio } from "react-loader-spinner";
+import { Online, Away, CheckStatus, Id, Name } from "../assets/constants/constant";
 
 const FriendsStatus = () => {
-  const [status, setStatus] = useState("null");
+  const [status, setStatus] = useState("");
   const isOnline: string = useOnline(status);
 
   const changeStatus = () => {
-    if (status === "loading") {
-      setStatus("online");
-    } else if (status === "online") {
+     if (status === "online") {
       setStatus("offline");
     } else {
       setStatus("online");
@@ -26,24 +23,24 @@ const FriendsStatus = () => {
             <div className="loading">
               <div className="loader"></div>
             </div>)
-           : isOnline === "true" ? (
+           : isOnline === "yes" ? (
             <p className="online">
               <i className="fa fa-circle"></i>
-              {online}{" "}
+              {Online}{" "}
             </p>)
           : (
-            <p className="offline">
+            <p className="no">
               <i className="fa fa-circle"></i>{Away}{" "}
             </p>
           )}
         </div>
         <div className="btn">
           <button className="check" onClick={changeStatus}>
-            Check Status
+          {CheckStatus}
           </button>
         </div>
-        <div className="id">Emp id:1024</div>
-        <div className="name">Emp Name:Pritisha</div>
+        <div className="id">{Id}</div>
+        <div className="name">{Name}</div>
       </div>
     </React.Fragment>
   );

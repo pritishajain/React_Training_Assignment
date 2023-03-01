@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 function useOnline(props: string) {
-  const [online, setOnline] = useState<string>(props);
+  const [online, setOnline] = useState(props);
 
   useEffect(() => {
-    if (props === "null") {
+    if (props === "") {
       setOnline("loading");
     }
     else if (props === "online") {
-      setOnline("true");
+      setOnline("yes");
     } else {
-      setOnline("false");
+      setOnline("no");
     }
   }, [props]);
 

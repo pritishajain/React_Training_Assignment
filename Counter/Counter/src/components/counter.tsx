@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../assets/css/counter.css";
-import { Heading,Inc,Dec,Add,Sub,Reset } from "../assets/constants/constant";
+import {Heading,Inc,Dec,Add,Sub,Reset} from "../assets/constants/constant";
 
 const Counter = () => {
   const initialCount: number = 0;

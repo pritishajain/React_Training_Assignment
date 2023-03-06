@@ -1,0 +1,10 @@
+export const Heading: string = "ToDo List";
+export const Placeholder: string = "Add a Item";
+export const Active: string = "Active";
+export const Completed: string = "Completed";
+export const Colon: string = " : ";
+export const RemoveAll: string = "Remove All";
+export const Add: string = "+";
+export const Deleted: string = "Deleted";
+export const Home: string = "Home";
+export const Recycle: string = "Recycle";

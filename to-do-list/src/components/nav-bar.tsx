@@ -8,11 +8,12 @@ const NavBar = (props: {
   activeList: { id: string; title: string }[];
   recycleList: { id: string; title: string }[];
 }) => {
-  
   return (
     <React.Fragment>
       <div className="navbar">
-        <Link to="/" className="home">{Home}</Link>
+        <Link to="/" className="home">
+          {Home}
+        </Link>
 
         <Link
           to="/complete"
@@ -22,7 +23,10 @@ const NavBar = (props: {
             activeList: props.activeList,
             recycleList: props.recycleList,
             text: "Completed List",
-          }}>{Completed}</Link>
+          }}
+        >
+          {Completed}
+        </Link>
 
         <Link
           to="/active"
@@ -32,7 +36,10 @@ const NavBar = (props: {
             activeList: props.activeList,
             recycleList: props.recycleList,
             text: "Active List",
-          }}>{Active}</Link>
+          }}
+        >
+          {Active}
+        </Link>
 
         <Link
           to="/recycle"
@@ -42,8 +49,10 @@ const NavBar = (props: {
             activeList: props.activeList,
             recycleList: props.recycleList,
             text: "Recycle Bin",
-          }}>{Recycle}</Link>
-
+          }}
+        >
+          {Recycle}
+        </Link>
       </div>
     </React.Fragment>
   );

@@ -4,12 +4,12 @@ import ToDoList from "./to-do-list";
 import NavBar from "./nav-bar";
 import { Heading, Placeholder, Active, Completed, RemoveAll, Add, Colon } from "../assets/constants/constant";
 import { Link } from "react-router-dom";
-import List from "./list";
+
 
 type myState = {
   data: string;
-  items: { id: string; title: string }[];
-  completed: { id: string; title: string }[];
+  active: { id: string; title: string }[];
+  complete: { id: string; title: string }[];
   recycleBin: { id: string; title: string }[];
 };
 
@@ -18,67 +18,66 @@ class TodoDisplay extends React.Component<{}, myState> {
     super(props);
 
     this.state = {
-      items: [],
+      active: [],
       data: "",
-      completed: [],
+      complete: [],
       recycleBin: [],
     };
   }
 
+  itemEvent = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({
+      data: event.target.value,
+    });
+  };
+
+  addItem = () => {
+    if (!this.state.data.length || this.state.data.trim().length === 0) {
+      return;
+    }
+    let newTask: { id: string; title: string } = {
+      title: this.state.data,
+      id: new Date().getTime().toString(),
+    };
+
+    this.setState({
+      active: [...this.state.active, newTask],
+      data: "",
+    });
+  };
+
+  removeItem = (itemid: string, text: string) => {
+    let newTask: { id: string; title: string } = {
+      title: text,
+      id: itemid,
+    };
+
+    this.setState({
+      active: [...this.state.active].filter((element) => itemid !== element.id),
+      recycleBin: [...this.state.recycleBin, newTask],
+    });
+  };
+
+  removeAllItems = () => {
+    this.setState({
+      recycleBin: [...this.state.recycleBin, ...this.state.active],
+      active: [],
+    });
+  };
+
+  completeItem = (itemid: string, text: string) => {
+    let newTask: { id: string; title: string } = {
+      title: text,
+      id: itemid,
+    };
+
+    this.setState({
+      active: [...this.state.active].filter((element) => itemid !== element.id),
+      complete: [...this.state.complete, newTask],
+    });
+  };
+
   render() {
-
-    const itemEvent = (event: React.ChangeEvent<HTMLInputElement>) => {
-      this.setState({
-        data: event.target.value,
-      });
-    };
-
-    const addItem = () => {
-      if (!this.state.data.length || this.state.data.trim().length === 0) {
-        return;
-      }
-      let newTask: { id: string; title: string } = {
-        title: this.state.data,
-        id: new Date().getTime().toString(),
-      };
-
-      this.setState({
-        items: [...this.state.items, newTask],
-        data: "",
-      });
-    };
-
-    const removeItem = (itemid: string, text: string) => {
-      let newTask: { id: string; title: string } = {
-        title: text,
-        id: itemid,
-      };
-
-      this.setState({
-        items: [...this.state.items].filter((element) => itemid !== element.id),
-        recycleBin: [...this.state.recycleBin, newTask],
-      });
-    };
-
-    const removeAllItems = () => {
-      this.setState({
-        recycleBin: [...this.state.recycleBin, ...this.state.items],
-        items: [],
-      });
-    };
-
-    const completedItem = (itemid: string, text: string) => {
-      let newTask: { id: string; title: string } = {
-        title: text,
-        id: itemid,
-      };
-
-      this.setState({
-        items: [...this.state.items].filter((element) => itemid !== element.id),
-        completed: [...this.state.completed, newTask],
-      });
-    };
-
     return (
       <React.Fragment>
         <div className="main-div">
@@ -90,8 +89,8 @@ class TodoDisplay extends React.Component<{}, myState> {
 
             <div className="nav">
               <NavBar
-                completeList={this.state.completed}
-                activeList={this.state.items}
+                completeList={this.state.complete}
+                activeList={this.state.active}
                 recycleList={this.state.recycleBin}
               />
             </div>
@@ -103,22 +102,24 @@ class TodoDisplay extends React.Component<{}, myState> {
                   placeholder={Placeholder}
                   value={this.state.data}
                   id="input-text"
-                  onChange={itemEvent}
+                  onChange={this.itemEvent}
                 />
-                <button id="Add" onClick={addItem}>
+                <button id="Add" onClick={this.addItem}>
                   {Add}
                 </button>
               </div>
 
               <div className="show-list">
                 <ul>
-                  {this.state.items.map((value) => {
+                  {this.state.active.map((value,key) => {
+                    
                     return (
                       <ToDoList
+                        key={value.id}
                         text={value.title}
                         itemid={value.id}
-                        onSelect={removeItem}
-                        onChange={completedItem}
+                        onSelect={this.removeItem}
+                        onChange={this.completeItem}
                       />
                     );
                   })}
@@ -132,13 +133,13 @@ class TodoDisplay extends React.Component<{}, myState> {
                   to="/active"
                   className="link"
                   state={{
-                    completeList: this.state.completed,
-                    activeList: this.state.items,
+                    completeList: this.state.complete,
+                    activeList: this.state.active,
                     recycleList: this.state.recycleBin,
                     text: "Active List",
                   }} >
                   {Active}{Colon}
-                  {this.state.items.length}
+                  {this.state.active.length}
                 </Link>
               </div>
 
@@ -147,17 +148,17 @@ class TodoDisplay extends React.Component<{}, myState> {
                   to="/complete"
                   className="link"
                   state={{
-                    completeList: this.state.completed,
-                    activeList: this.state.items,
+                    completeList: this.state.complete,
+                    activeList: this.state.active,
                     recycleList: this.state.recycleBin,
                     text: "Completed List",
                   }} >
                   {Completed}{Colon}
-                  {this.state.completed.length}
+                  {this.state.complete.length}
                 </Link>
               </div>
 
-              <div className="active" onClick={removeAllItems}>
+              <div className="active" onClick={this.removeAllItems}>
                 {RemoveAll}
               </div>
 
@@ -167,8 +168,8 @@ class TodoDisplay extends React.Component<{}, myState> {
                   <Link
                     to="/recycle"
                     state={{
-                      completeList: this.state.completed,
-                      activeList: this.state.items,
+                      completeList: this.state.complete,
+                      activeList: this.state.active,
                       recycleList: this.state.recycleBin,
                       text: "Recycle Bin",
                     }} >

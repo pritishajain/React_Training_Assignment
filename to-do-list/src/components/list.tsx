@@ -12,33 +12,35 @@ const List = () => {
   }
 
   const location = useLocation();
-  const { completeList, activeList, recycleList, text } = location.state as stateType;
+  const { completeList, activeList, recycleList, text } =
+    location.state as stateType;
 
   let arrayDataItems;
 
   if (text === "Active List") {
-    arrayDataItems = activeList.map((item) => (
-      <li>
+    arrayDataItems = activeList.map((item, key) => (
+      <li key="item.id">
         <p>{item.title}</p>
       </li>
     ));
   } else if (text === "Completed List") {
-    arrayDataItems = completeList.map((item) => (
-      <li>
+    arrayDataItems = completeList.map((item, key) => (
+      <li key="item.id">
+        <p>{item.title}</p>
+      </li>
+    ));
+  } else if (text === "Recycle Bin") {
+    arrayDataItems = recycleList.map((item, key) => (
+      <li key="item.id">
         <p>{item.title}</p>
       </li>
     ));
   } else {
-    arrayDataItems = recycleList.map((item) => (
-      <li>
-        <p>{item.title}</p>
-      </li>
-    ));
+    alert("not a valid item");
   }
 
   return (
     <React.Fragment>
-
       <NavBar
         completeList={completeList}
         activeList={activeList}
@@ -48,7 +50,6 @@ const List = () => {
       <div className="list">
         <ul>{arrayDataItems}</ul>
       </div>
-
     </React.Fragment>
   );
 };

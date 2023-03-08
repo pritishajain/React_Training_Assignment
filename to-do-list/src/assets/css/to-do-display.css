@@ -73,14 +73,8 @@ input[type="text"] {
   width: 100%;
   margin: auto;
 }
-<<<<<<< Updated upstream
 .active {
   padding: 20px;
-=======
-.active
- {
-  padding: 30px;
->>>>>>> Stashed changes
   text-align: center;
   border: 2px solid rgb(70, 70, 80);
   margin: 30px;
@@ -91,11 +85,7 @@ input[type="text"] {
   color: aliceblue;
   font-family: "Julee", cursive;
 }
-<<<<<<< Updated upstream
 .active .fa-trash {
-=======
-.active .fa-trash{
->>>>>>> Stashed changes
   font-size: 50px;
   color: red;
 }
@@ -109,11 +99,7 @@ input[type="text"] {
   background-color: wheat;
   padding-left: 2px;
   padding-right: 2px;
-<<<<<<< Updated upstream
 }
-=======
- }
->>>>>>> Stashed changes
 .active:hover {
   cursor: pointer;
   -ms-transform: scale(1.2);
@@ -121,14 +107,10 @@ input[type="text"] {
   transform: scale(1.2);
   background-color: #232c3a;
 }
-<<<<<<< Updated upstream
 .link {
   color: white;
   text-decoration: none;
 }
-=======
-
->>>>>>> Stashed changes
 @media screen and(max-width: 660x) {
   .active,
   .added,

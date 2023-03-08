@@ -1,10 +1,12 @@
-import React from 'react';
-import TodoDisplay from './components/to-do-display';
+import React from "react";
+import Main from "./components/main";
 
-function App() {
+const App = () => {
   return (
-    <TodoDisplay />
+    <React.Fragment>
+      <Main />
+    </React.Fragment>
   );
-}
+};
 
 export default App;

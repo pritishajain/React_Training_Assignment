@@ -17,17 +17,15 @@ h1 {
   font-family: "Shantell Sans rev=1";
 }
 .main-div {
-  margin: auto;
   width: 100%;
 }
 .upper-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 20px;
   border-bottom: 2px solid rgb(70, 70, 80);
-  height: 45vh;
-  width: 45%;
+  height: 35vh;
+  width: 50%;
   margin: auto;
 }
 .add-list {
@@ -35,7 +33,7 @@ h1 {
   justify-content: space-between;
 }
 .show-list {
-  margin: 30px;
+  margin: 10px;
   overflow: scroll;
 }
 .show-list::-webkit-scrollbar {
@@ -72,14 +70,11 @@ input[type="text"] {
   display: flex;
   justify-content: space-around;
   padding: 20px;
-  width: 70%;
+  width: 100%;
   margin: auto;
 }
-.active,
-.added,
-.completed,
-.remove {
-  padding: 30px;
+.active {
+  padding: 20px;
   text-align: center;
   border: 2px solid rgb(70, 70, 80);
   margin: 30px;
@@ -90,6 +85,21 @@ input[type="text"] {
   color: aliceblue;
   font-family: "Julee", cursive;
 }
+.active .fa-trash {
+  font-size: 50px;
+  color: red;
+}
+.badge {
+  position: relative;
+  top: -30px;
+  left: -18px;
+  border: 1px solid black;
+  color: black;
+  border-radius: 50%;
+  background-color: wheat;
+  padding-left: 2px;
+  padding-right: 2px;
+}
 .active:hover {
   cursor: pointer;
   -ms-transform: scale(1.2);
@@ -97,26 +107,9 @@ input[type="text"] {
   transform: scale(1.2);
   background-color: #232c3a;
 }
-.added:hover {
-  cursor: pointer;
-  -ms-transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
-  background-color: #232c3a;
-}
-.completed:hover {
-  cursor: pointer;
-  -ms-transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
-  background-color: #232c3a;
-}
-.remove:hover {
-  cursor: pointer;
-  -ms-transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
-  background-color: #232c3a;
+.link {
+  color: white;
+  text-decoration: none;
 }
 @media screen and(max-width: 660x) {
   .active,

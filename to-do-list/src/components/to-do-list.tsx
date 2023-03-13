@@ -1,15 +1,17 @@
 import React from "react";
 import "../assets/css/to-do-list.css";
 import { Complete, Delete } from  "../assets/constants/constant";
+import { completeItem ,removeItem} from "../redux/actions/to-do-actions";
+import { useDispatch } from "react-redux";
 
-const ToDoList = (props: {
+interface myProps{
   key: string;
   text: string;
   itemid: string;
-  onSelect: (itemid: string, text: string) => void;
-  onChange: (itemid: string, text: string) => void;
-}) => {
-  
+}
+
+const ToDoList = (props: myProps) => {
+  const dispatch=useDispatch();
   return (
     <React.Fragment>
       <div className="list-style">
@@ -17,7 +19,7 @@ const ToDoList = (props: {
         <i
           className="fa fa-check"
           aria-hidden="true"
-          onClick={() => {props.onChange(props.itemid, props.text);}} 
+          onClick={() => {dispatch(completeItem(props.itemid, props.text ))}} 
         >
           <span className="tooltip">{Complete}</span>
         </i>
@@ -25,7 +27,7 @@ const ToDoList = (props: {
         <i
           className="fa fa-times"
           aria-hidden="true"
-          onClick={() => {props.onSelect(props.itemid, props.text);}} 
+          onClick={() => {dispatch(removeItem(props.itemid, props.text))}} 
         >
           <span className="tooltip">{Delete}</span>
         </i>
@@ -33,4 +35,5 @@ const ToDoList = (props: {
     </React.Fragment>
   );
 };
+
 export default ToDoList;

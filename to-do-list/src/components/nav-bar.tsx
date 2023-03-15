@@ -3,11 +3,7 @@ import { Link } from "react-router-dom";
 import "../assets/css/nav-bar.css";
 import { Completed, Active, Home, Recycle } from "../assets/constants/constant";
 
-const NavBar = (props: {
-  completeList: { id: string; title: string }[];
-  activeList: { id: string; title: string }[];
-  recycleList: { id: string; title: string }[];
-}) => {
+const NavBar = () => {
   return (
     <React.Fragment>
       <div className="navbar">
@@ -19,9 +15,6 @@ const NavBar = (props: {
           to="/complete"
           className="home"
           state={{
-            completeList: props.completeList,
-            activeList: props.activeList,
-            recycleList: props.recycleList,
             text: "Completed List",
           }}
         >
@@ -32,9 +25,6 @@ const NavBar = (props: {
           to="/active"
           className="home"
           state={{
-            completeList: props.completeList,
-            activeList: props.activeList,
-            recycleList: props.recycleList,
             text: "Active List",
           }}
         >
@@ -45,9 +35,6 @@ const NavBar = (props: {
           to="/recycle"
           className="home"
           state={{
-            completeList: props.completeList,
-            activeList: props.activeList,
-            recycleList: props.recycleList,
             text: "Recycle Bin",
           }}
         >
@@ -57,4 +44,7 @@ const NavBar = (props: {
     </React.Fragment>
   );
 };
+
+
 export default NavBar;
+

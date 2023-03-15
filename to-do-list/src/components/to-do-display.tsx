@@ -4,94 +4,65 @@ import ToDoList from "./to-do-list";
 import NavBar from "./nav-bar";
 import { Heading, Placeholder, Active, Completed, RemoveAll, Add, Colon } from "../assets/constants/constant";
 import { Link } from "react-router-dom";
+import { addItem, removeAllItem } from "../redux/actions/to-do-actions";
+import { connect } from "react-redux";
 
-type myState = {
+interface myState {
   data: string;
+}
+
+interface dispatchProps {
+  addItem: (data: string) => void;
+  removeAllItem: () => void;
+}
+
+export interface stateProps {
   active: { id: string; title: string }[];
   complete: { id: string; title: string }[];
   recycleBin: { id: string; title: string }[];
-};
+}
 
-class TodoDisplay extends React.Component<{}, myState> {
-  constructor(props: string) {
+type Props = dispatchProps & stateProps;
+
+class TodoDisplay extends React.Component<Props, myState> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
-      active: [],
       data: "",
-      complete: [],
-      recycleBin: [],
     };
   }
 
-  itemEvent = (event: React.ChangeEvent<HTMLInputElement>) => {
+  changeInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
       data: event.target.value,
     });
   };
 
-  addItem = () => {
+  addData=()=>{
     if (!this.state.data.length || this.state.data.trim().length === 0) {
+      this.setState({
+        data:""
+      })
       return;
     }
-    let newTask: { id: string; title: string } = {
-      title: this.state.data,
-      id: new Date().getTime().toString(),
-    };
-
+    this.props.addItem(this.state.data);
     this.setState({
-      active: [...this.state.active, newTask],
-      data: "",
-    });
-  };
-
-  removeItem = (itemid: string, text: string) => {
-    let newTask: { id: string; title: string } = {
-      title: text,
-      id: itemid,
-    };
-
-    this.setState({
-      active: [...this.state.active].filter((element) => itemid !== element.id),
-      recycleBin: [...this.state.recycleBin, newTask],
-    });
-  };
-
-  removeAllItems = () => {
-    this.setState({
-      recycleBin: [...this.state.recycleBin, ...this.state.active],
-      active: [],
-    });
-  };
-
-  completeItem = (itemid: string, text: string) => {
-    let newTask: { id: string; title: string } = {
-      title: text,
-      id: itemid,
-    };
-
-    this.setState({
-      active: [...this.state.active].filter((element) => itemid !== element.id),
-      complete: [...this.state.complete, newTask],
-    });
-  };
+      data:""
+    })
+  }
 
   render() {
     return (
       <React.Fragment>
         <div className="main-div">
           <div className="main-container">
-
             <div className="head">
               <h1>{Heading}</h1>
             </div>
 
             <div className="nav">
-              <NavBar
-                completeList={this.state.complete}
-                activeList={this.state.active}
-                recycleList={this.state.recycleBin}
-              />
+              <NavBar />
             </div>
 
             <div className="upper-container">
@@ -101,24 +72,24 @@ class TodoDisplay extends React.Component<{}, myState> {
                   placeholder={Placeholder}
                   value={this.state.data}
                   id="input-text"
-                  onChange={this.itemEvent}
+                  onChange={this.changeInputValue}
                 />
-                <button id="Add" onClick={this.addItem}>
+                <button
+                  id="Add"
+                  onClick={this.addData}
+                >
                   {Add}
                 </button>
               </div>
 
               <div className="show-list">
                 <ul>
-                  {this.state.active.map((value,key) => {
-                    
+                  {this.props.active.map((value, key) => {
                     return (
                       <ToDoList
                         key={value.id}
                         text={value.title}
                         itemid={value.id}
-                        onSelect={this.removeItem}
-                        onChange={this.completeItem}
                       />
                     );
                   })}
@@ -131,14 +102,11 @@ class TodoDisplay extends React.Component<{}, myState> {
                 <Link
                   to="/active"
                   className="link"
-                  state={{
-                    completeList: this.state.complete,
-                    activeList: this.state.active,
-                    recycleList: this.state.recycleBin,
-                    text: "Active List",
-                  }} >
-                  {Active}{Colon}
-                  {this.state.active.length}
+                  state={{ text: "Active List" }}
+                >
+                  {Active}
+                  {Colon}
+                  {this.props.active.length}
                 </Link>
               </div>
 
@@ -146,18 +114,18 @@ class TodoDisplay extends React.Component<{}, myState> {
                 <Link
                   to="/complete"
                   className="link"
-                  state={{
-                    completeList: this.state.complete,
-                    activeList: this.state.active,
-                    recycleList: this.state.recycleBin,
-                    text: "Completed List",
-                  }} >
-                  {Completed}{Colon}
-                  {this.state.complete.length}
+                  state={{ text: "Completed List" }}
+                >
+                  {Completed}
+                  {Colon}
+                  {this.props.complete.length}
                 </Link>
               </div>
 
-              <div className="active" onClick={this.removeAllItems}>
+              <div
+                className="active"
+                onClick={() => {this.props.removeAllItem()}}
+              >
                 {RemoveAll}
               </div>
 
@@ -166,28 +134,38 @@ class TodoDisplay extends React.Component<{}, myState> {
                 <span className="badge badge-light">
                   <Link
                     to="/recycle"
-                    state={{
-                      completeList: this.state.complete,
-                      activeList: this.state.active,
-                      recycleList: this.state.recycleBin,
-                      text: "Recycle Bin",
-                    }} >
-                    {this.state.recycleBin.length}
+                    state={{ text: "Recycle Bin" }}
+                  >
+                    {this.props.recycleBin.length}
                   </Link>
                 </span>
               </div>
             </div>
-            <div className="active">
-              <i className="fa fa-trash"></i>
-                <span className="badge badge-light">
-                {this.state.recycleBin.length}
-              </span>
-            </div>
           </div>
         </div>
-       
       </React.Fragment>
     );
   }
 }
-export default TodoDisplay;
+
+const mapStateToProps = (state: stateProps) => {
+  return {
+    active: state.active,
+    complete: state.complete,
+    recycleBin: state.recycleBin,
+  };
+};
+
+const mapDispatchToProps = (dispatch: any): dispatchProps => {
+  return {
+    addItem: (data: string) => {
+      return dispatch(addItem(data))
+    },
+
+    removeAllItem: () => {
+      return dispatch(removeAllItem());
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoDisplay);

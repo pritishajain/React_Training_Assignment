@@ -1,21 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import NavBar from "../common/navBar";
+import NavBar from "../navbar_section/navBar";
 import FilterCategory from "./filter_category";
 import FilterSubCategory from "./filter_sub_category";
 import FilterSideBar from "./filter_side_bar";
 import ProductTile from "../common/product_tile";
 import { storeFilteredProducts } from "../../redux/actions/fetch_action";
-import { myState } from "../../redux/reducers/fetch_reducer";
+import { Istate } from "../../interface/product_reducer_interface";
 import { filterState } from "../../redux/reducers/filter_property_reducer";
-import Title from "../common/title/title";
+import Title from "../title_section/title";
 import { IinfoDataType } from "../../interface/data_interface";
+import { Products } from "../../assets/constants/constant";
+
+
+interface filteredState {
+  filterPropertyReducer: filterState;
+}
+
 
 const ProductView = (props: { text: string }) => {
 
-  const [show, setShow] = useState<boolean>(true);
+  let product1: IinfoDataType[] = [];
+  let product2: IinfoDataType[] = [];
+  let product3: IinfoDataType[] = [];
+  let product4: IinfoDataType[] = [];
 
+  const [show, setShow] = useState<boolean>(true);
   const [showCategory, setShowCategory] = useState<boolean>(false);
   const [showSubCategory, setShowSubCategory] = useState<boolean>(false);
 
@@ -27,33 +38,13 @@ const ProductView = (props: { text: string }) => {
 
   const dispatch = useDispatch();
 
-  interface State {
-    productReducer: myState;
-  }
+  const filterProducts = useSelector((state: Istate) => state.productReducer.filterProducts);
+  const products = useSelector((state: Istate) => state.productReducer.products);
+  const allProducts = useSelector((state: Istate) => state.productReducer.allProducts);
 
-  interface filteredState {
-    filterPropertyReducer: filterState;
-  }
-
-  const filterProducts = useSelector(
-    (state: State) => state.productReducer.filterProducts
-  );
-
-  const products = useSelector((state: State) => state.productReducer.products);
-
-  const allProducts = useSelector(
-    (state: State) => state.productReducer.allProducts
-  );
-
-  var product1: IinfoDataType[] = [];
-  var product2: IinfoDataType[] = [];
-  var product3: IinfoDataType[] = [];
-  var product4: IinfoDataType[] = [];
-
-  
   const categoryArray = useSelector(
     (state: filteredState) => state.filterPropertyReducer.category
-  );
+  );  
   const subCategoryArray = useSelector(
     (state: filteredState) => state.filterPropertyReducer.subCategory
   );
@@ -68,27 +59,10 @@ const ProductView = (props: { text: string }) => {
   );
 
   useEffect(() => {
-    if ( id && (pid === "Faucets" || pid === "Sink" || pid === "Tiles" ||  pid === "Shower")) {
-      setShow(false);
-      setShowCategory(false);
-      setShowSubCategory(true);
-      setSubCategory(pid);
-      setCategory(id);
+    displayProducts()
+  },[id,pid]);
 
-    } else if (id === "Kitchen" || id === "Bathroom") {
-      setShow(false);
-      setShowCategory(true);
-      setShowSubCategory(false);
-      setCategory(id);
 
-    } else {
-      setShow(true);
-      setShowCategory(false);
-      setShowSubCategory(false);
-    }
-  });
-
-  
   useEffect(() => {
     if ( categoryArray.length > 0 || subCategoryArray.length > 0 || brandCategoryArray.length > 0 || minPriceRange > 0) {
       product1 = filterAccCategory(products);
@@ -106,8 +80,28 @@ const ProductView = (props: { text: string }) => {
     }
   }, [ categoryArray, subCategoryArray, brandCategoryArray, maxPriceRange, minPriceRange ]);
 
- 
 
+  const displayProducts=()=>{
+    if ( id && (pid === "Faucets" || pid === "Sink" || pid === "Tiles" ||  pid === "Shower")) {
+      setShow(false);
+      setShowCategory(false);
+      setShowSubCategory(true);
+      setSubCategory(pid);
+      setCategory(id);
+  
+    } else if (id === "Kitchen" || id === "Bathroom") {
+      setShow(false);
+      setShowCategory(true);
+      setShowSubCategory(false);
+      setCategory(id);
+  
+    } else {
+      setShow(true);
+      setShowCategory(false);
+      setShowSubCategory(false);
+    }
+  }
+ 
   const filterAccCategory = (products: IinfoDataType[]) => {
     if (categoryArray.length > 0) {
       categoryArray.map((element) => {
@@ -156,16 +150,15 @@ const ProductView = (props: { text: string }) => {
           value.productPrice <= maxPriceRange
       ),
     ];
-
     return product4;
   };
 
 
   return (
     <React.Fragment>
-       <Title />
+      <Title />
       <NavBar /> 
-      
+
       <FilterCategory showCategory={showCategory} category={category} />
 
       <FilterSubCategory
@@ -175,18 +168,13 @@ const ProductView = (props: { text: string }) => {
       />
 
       <div className={show ? "display-products" : "hide-products"}>
-        <h1>Products</h1>
+        <h1>{Products}</h1>
         <div className="display-type">
           <div className="side">
             <FilterSideBar />
           </div>
           <div className="main-products">
-            {props.text === "searchPage" ? (
-              <ProductTile list={filterProducts} />
-            ) : (
-              <ProductTile list={allProducts} />
-            )}
-           
+            <ProductTile list={props.text === "searchPage" ? filterProducts : allProducts} />
           </div>
         </div>
       </div>

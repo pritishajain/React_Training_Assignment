@@ -36,13 +36,16 @@ h1{
 .picons{
     transition: .5s ease;
     opacity: 0;
-    position: absolute;
-    top: 80%;
-    left: 48%;
+     position: absolute; 
+     top: 70%;
+    left: 50%; 
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
     transition: .5s ;
+    height: 25px;
+    width: 150px
+   
 }
 .img:hover .pimage{
     opacity: 0.8;
@@ -52,11 +55,12 @@ h1{
     opacity: 1;
 }
 .icon{
+    font-size: 20px;
     margin: 1px; 
     border: none;
-    background-color: grey;
+    background-color: rgb(65, 65, 65);
     color: white;
-    padding: 10px;
+    padding: 10px; 
 }
 .display-products{
     display: visible;
@@ -72,4 +76,16 @@ h1{
 }
 .main-products{
     flex:15;
+}
+.icon:hover{
+    background-color: rgb(134, 107, 107);
+}
+.picons .fa-heart-o:hover{
+    color: red;
+}
+.picons .fa-eye:hover{
+    color:green;
+}
+.picons .fa-shopping-cart:hover{
+    color: blue;
 }

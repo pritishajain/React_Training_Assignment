@@ -1,4 +1,5 @@
 import { IinfoDataType } from "../../interface/data_interface";
+import { IuserInfo } from "../../interface/user_data_interface";
 
 export const fetchSomeData = () => {
   return {
@@ -90,4 +91,12 @@ export const priceFilterProducts=(priceData:IinfoDataType[])=>{
     type:"PRICE_FILTER_PRODUCTS",
     payload:priceData
   }
+}
+
+export const getUserInfo=(userData:IuserInfo[])=>{
+  return{
+    type:"GET_USER_INFO",
+    payload:userData
+  }
+
 }

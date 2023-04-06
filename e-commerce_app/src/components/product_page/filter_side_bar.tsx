@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import Slider from "@mui/material/Slider";
 import { removeBrandCategory, removeCategory, removeSubCategory } from "../../redux/actions/fetch_action";
 import { addBrandCategory, addCategory, addSubCategory, priceFilter } from "../../redux/actions/fetch_action";
 import { Kitchen, Bathroom, Faucets, Shower, Sink, Tiles, Cera, Dsons, Hindware, Jaguar } from "../../assets/constants/constant";
-
 import "../../assets/css/filter_side_bar.css";
 
 const FilterSideBar = () => {
@@ -12,11 +11,9 @@ const FilterSideBar = () => {
   const [range, setRange] = useState<[number, number]>([5, 30]);
   const dispatch = useDispatch();
 
-  const handleChanges = (
-    event: any,
-    newValue: number | number[],
-    activeThumb: number
-  ) => {
+
+  const handleChanges = (event:Event, newValue: number | number[], activeThumb: number) => {
+   
     if (Array.isArray(newValue)) {
       setRange(newValue as [number, number]);
     } else {
@@ -31,23 +28,16 @@ const FilterSideBar = () => {
   const handleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { checked, name, className } = e.target;
 
-    if (checked) {
       if (className === "hlink") {
-        dispatch(addCategory(name));
+        checked ? dispatch(addCategory(name)) : dispatch(removeCategory(name));
+        
       } else if (className === "clink") {
-        dispatch(addSubCategory(name));
+        checked ?  dispatch(addSubCategory(name)) : dispatch(removeSubCategory(name));
+       
       } else if (className === "blink") {
-        dispatch(addBrandCategory(name));
+        checked ? dispatch(addBrandCategory(name)) : dispatch(removeBrandCategory(name));
       }
-    } else {
-      if (className === "hlink") {
-        dispatch(removeCategory(name));
-      } else if (className === "clink") {
-        dispatch(removeSubCategory(name));
-      } else if (className === "blink") {
-        dispatch(removeBrandCategory(name));
-      }
-    }
+    
   };
 
   return (

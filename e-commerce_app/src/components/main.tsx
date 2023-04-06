@@ -8,6 +8,7 @@ import Products from "./product_page/products";
 import Wishlist from "./wishlist_page/wishlist";
 import Cart from "./cart_page/cart";
 import Contact from "./contact_page/contact";
+import Account from "./title_section/account";
 import { fetchSomeData } from "../redux/actions/fetch_action";
 
 const Main = () => {
@@ -28,6 +29,7 @@ const Main = () => {
         <Route path="/products/:id" element={<Products />}/>
         <Route path="/products/:id/:pid" element={<Products />} /> 
         <Route path="/search/:keyword" element={<Products/>} />
+        <Route path="/account" element={<Account />} />
         <Route path="wishlist" element={<Wishlist/>} />
         <Route path="cart" element={<Cart/>} />
         <Route path="contact" element={<Contact/>} />

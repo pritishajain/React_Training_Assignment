@@ -1,9 +1,10 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import Main from "./components/main";
-import "./App.css";
 import { Provider } from "react-redux/es/exports";
 import store from "./redux/store";
+import Main from "./components/main";
+import "./App.css";
+
 
 function App() {
   return (

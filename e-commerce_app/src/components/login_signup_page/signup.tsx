@@ -2,12 +2,15 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth, userCollection  } from "../../firebase";
 import { IsignUpValue } from "../../interface/signup_interface";
 import { MssLogo, GetStarted, Account, SignIn, Name, Password, ConfirmPassword, Email } from "../../assets/constants/constant";
 import "../../assets/css/signup.css";
 import logo from "../../assets/images/logo.png";
 import profile from "../../assets/images/profile.jpg";
+import { addDoc } from 'firebase/firestore';
+import { IuserInfo } from "../../interface/user_data_interface";
+
 
 const SignUp = () => {
   const initialState: IsignUpValue = {
@@ -75,19 +78,26 @@ const SignUp = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           updateProfile(user, { displayName: input.name });
+
+          const userData: IuserInfo = {
+            email: input.email,
+            fullName: input.name,
+            cart: [],
+            wishList: [],
+            orderHistory:[],
+          };
+
+          addDoc(userCollection, userData);
+
           navigate("/login");
         })
         .catch((e) => {
-        
-          if(e.code === 'auth/invalid-email')
-          {
-            setErrorMsg(()=>("Invalid email !"));
+          if (e.code === "auth/invalid-email") {
+            setErrorMsg(() => "Invalid email !");
+          } else if (e.code === "auth/email-already-in-use") {
+            setErrorMsg(() => "Email already exists !");
           }
-          else if(e.code === 'auth/email-already-in-use')
-          {
-            setErrorMsg(()=>("Email already exists !"));
-          }
-        })
+        });
          
     } 
   };

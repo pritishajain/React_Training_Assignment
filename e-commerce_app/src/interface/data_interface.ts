@@ -5,5 +5,6 @@ export interface IinfoDataType {
   productPrice: number;
   productSubCategory: string;
   productCategory: string;
+  productDescription: string;
   brand:string;
 }

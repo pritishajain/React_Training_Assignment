@@ -3,7 +3,6 @@ import { IinfoDataType } from "../../interface/data_interface";
 export interface myAction {
   type: string;
   payload: IinfoDataType[];
- 
 }
 
 export interface myState {

@@ -1,8 +1,9 @@
 import React from "react";
-import Title from "../common/title/title";
-import NavBar from "../common/navBar";
+import Title from "../title_section/title";
+import NavBar from "../navbar_section/navBar";
 import HomeCaraousel from "./home_caraousel";
 import "../../assets/css/home.css";
+import Footer from "./footer";
 
 const Home = () => {
 
@@ -11,6 +12,7 @@ const Home = () => {
       <Title />
       <NavBar />
       <HomeCaraousel />
+      <Footer/>
     </React.Fragment>
   );
 };

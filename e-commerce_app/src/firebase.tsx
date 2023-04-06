@@ -20,6 +20,6 @@ const db = initializeFirestore(app, {
 	experimentalAutoDetectLongPolling: true
   })
 const productCollection = collection(db,'Product');
+const userCollection = collection(db,'UserInformation');
 
-
-export { app, auth, db , productCollection};
+export { app, auth, db , productCollection, userCollection};

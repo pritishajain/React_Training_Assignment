@@ -1,13 +1,18 @@
 import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { auth } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+
 import { IloginValue } from "../../interface/login_interface";
 import { MssLogo, WelcomeBack, NotRegistered, SignUp, ErrorFields, SignIn } from "../../assets/constants/constant";
 import "../../assets/css/signup.css";
 import logo from "../../assets/images/logo.png";
 import profile from "../../assets/images/profile.jpg";
+import { IuserInfo } from "../../interface/user_data_interface";
+import { getUserInfo } from "../../redux/actions/fetch_action";
+
 
 
 const Login = () => {
@@ -15,8 +20,7 @@ const Login = () => {
     email: "",
     password: "",
   };
-
- 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [input, setInput] = useState<IloginValue>(state);
@@ -35,8 +39,9 @@ const Login = () => {
     setErrorMsg("");
 
      signInWithEmailAndPassword(auth, input.email, input.password)
-      .then(() => {
+      .then(async() =>{
         navigate("/");
+      
       })
       .catch((e) => {
         if(e.code === 'auth/user-not-found')

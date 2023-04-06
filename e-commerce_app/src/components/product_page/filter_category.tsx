@@ -1,27 +1,26 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { myState } from "../../redux/reducers/fetch_reducer";
+import { Istate } from "../../interface/product_reducer_interface";
 import ProductTile from "../common/product_tile";
 import FilterSideBar from "./filter_side_bar";
+import { IinfoDataType } from "../../interface/data_interface";
 import "../../assets/css/filter_category.css";
 
-const FilterCategory = (props: { showCategory: boolean; category: string | null; }) => {
+interface filterProps{
+  showCategory: boolean; 
+  category: string | null;
+}
+const FilterCategory = (props: filterProps) => {
   
-  interface State {
-    productReducer: myState;
-  }
-
-  const product = useSelector((state: State) => state.productReducer.products);
+  const product = useSelector((state: Istate) => state.productReducer.products);
 
   var filterList = product.filter(
-    (element) => element.productCategory === props.category
+    (element:IinfoDataType) => element.productCategory === props.category
   );
 
   return (
     <React.Fragment>
-      <div
-        className={props.showCategory ? "displayk-products" : "hidek-products"}
-      >
+      <div className={props.showCategory ? "displayk-products" : "hidek-products"}>
         <h1>{props.category}</h1>
 
         <div className="display-type">

@@ -104,10 +104,10 @@ const ProductView = (props: { text: string }) => {
  
   const filterAccCategory = (products: IinfoDataType[]) => {
     if (categoryArray.length > 0) {
-      categoryArray.map((element) => {
+      categoryArray.map((element:string) => {
         product1 = [
           ...product1,
-          ...products.filter((value) => element === value.productCategory),
+          ...products.filter((value:IinfoDataType) => element === value.productCategory),
         ];
       });
       return product1;
@@ -117,10 +117,10 @@ const ProductView = (props: { text: string }) => {
 
   const filterAccSubCategory = (product1: IinfoDataType[]) => {
     if (subCategoryArray.length > 0) {
-      subCategoryArray.map((element) => {
+      subCategoryArray.map((element:string) => {
         product2 = [
           ...product2,
-          ...product1.filter((value) => element === value.productSubCategory),
+          ...product1.filter((value:IinfoDataType) => element === value.productSubCategory),
         ];
       });
       return product2;
@@ -130,10 +130,10 @@ const ProductView = (props: { text: string }) => {
 
   const filterAccBrand = (product2: IinfoDataType[]) => {
     if (brandCategoryArray.length > 0) {
-      brandCategoryArray.map((element) => {
+      brandCategoryArray.map((element:string) => {
         product3 = [
           ...product3,
-          ...product2.filter((value) => element === value.brand),
+          ...product2.filter((value:IinfoDataType) => element === value.brand),
         ];
       });
       return product3;
@@ -145,7 +145,7 @@ const ProductView = (props: { text: string }) => {
     product4 = [
       ...product4,
       ...product3.filter(
-        (value) =>
+        (value:IinfoDataType) =>
           value.productPrice >= minPriceRange &&
           value.productPrice <= maxPriceRange
       ),

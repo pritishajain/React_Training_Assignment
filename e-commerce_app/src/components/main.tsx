@@ -10,6 +10,8 @@ import Cart from "./cart_page/cart";
 import Contact from "./contact_page/contact";
 import Account from "./title_section/account";
 import { fetchSomeData } from "../redux/actions/fetch_action";
+import { ToastContainer } from 'react-toastify';
+import OrderConfirmation from "./order_page/order_confirmation";
 
 const Main = () => {
 
@@ -33,7 +35,9 @@ const Main = () => {
         <Route path="wishlist" element={<Wishlist/>} />
         <Route path="cart" element={<Cart/>} />
         <Route path="contact" element={<Contact/>} />
+        <Route path="/orderconfirmation" element={<OrderConfirmation/>}/>
       </Routes>
+      <ToastContainer autoClose={1000}/>
     </React.Fragment>
   );
 };

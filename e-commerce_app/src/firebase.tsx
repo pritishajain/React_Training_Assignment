@@ -3,7 +3,6 @@ import { getAuth } from "firebase/auth";
 import { initializeFirestore, collection} from 'firebase/firestore';
 
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyCua-2wBA6ChWYG_1rpUlqRX41HMNvII5U",
   authDomain: "ecommerce-e8895.firebaseapp.com",

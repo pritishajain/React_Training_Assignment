@@ -2,18 +2,15 @@ import React from "react";
 import NavBar from "../navbar_section/navBar";
 import Title from "./title";
 import { FullName, Email, AccountDetails } from "../../assets/constants/constant";
-import { userState } from "../../redux/reducers/get_user_info_reducer";
 import { useSelector } from "react-redux";
 import "../../assets/css/account.css";
+import { IuserState } from "../../interface/product_reducer_interface";
 
-interface IuserState {
-  userDataReducer: userState;
-}
 const Account = () => {
   const userData = useSelector(
     (state: IuserState) => state.userDataReducer.userData
   );
-  
+
   return (
     <React.Fragment>
       <Title />
@@ -23,11 +20,11 @@ const Account = () => {
         <div className="acc-details">
           <div className="acc-item">
             <span className="ahead">{FullName}:</span>
-            <span className="chead">{userData[0]?.fullName}</span>
+            <span className="chead">{userData.fullName}</span>
           </div>
           <div className="acc-item">
             <span className="ahead">{Email}:</span>
-            <span className="chead">{userData[0]?.email}</span>
+            <span className="chead">{userData.email}</span>
           </div>
         </div>
       </div>

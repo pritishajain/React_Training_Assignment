@@ -1,7 +1,7 @@
 .dropdown-content{
     position: absolute; 
     float: right; 
-    top: 13.5%;
+    top: 14%;
     left: 80%;
     z-index: 1;
     padding: 10px;
@@ -15,6 +15,9 @@
   }
   .dropdown-content li:hover{
     background-color: rgb(211, 126, 142);
+  }
+  .dropdown-content .login-btn:hover{
+    background-color: rgb(124, 122, 122);
   }
   .dropdown-content .login-btn{
     text-align: center;
@@ -42,6 +45,10 @@
     text-decoration: none;
   }
   .acc-link{
+    text-decoration: none;
+    color: black;
+  }
+  .p-link{
     text-decoration: none;
     color: black;
   }

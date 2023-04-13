@@ -59,7 +59,7 @@ h1{
     margin: 1px; 
     border: none;
     background-color: rgb(65, 65, 65);
-    color: white;
+     color: white; 
     padding: 10px; 
 }
 .display-products{
@@ -80,12 +80,9 @@ h1{
 .icon:hover{
     background-color: rgb(134, 107, 107);
 }
-.picons .fa-heart-o:hover{
-    color: red;
+.picons .fa-heart-o{
+    color: white;
 }
-.picons .fa-eye:hover{
-    color:green;
-}
-.picons .fa-shopping-cart:hover{
-    color: blue;
+.picons .fa-heart{
+    color: red
 }

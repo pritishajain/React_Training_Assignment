@@ -45,21 +45,21 @@ const filterPropertyReducer = (
       return {
         ...state,
         category: [...state.category].filter(
-          (value) => value !== action.payload
+          (value:string) => value !== action.payload
         ),
       };
     case "REMOVE_SUB_CATEGORY":
       return {
         ...state,
         subCategory: [...state.subCategory].filter(
-          (value) => value !== action.payload
+          (value:string) => value !== action.payload
         ),
       };
     case "REMOVE_BRAND_CATEGORY":
       return {
         ...state,
         brand: [...state.brand].filter(
-          (value) => value !== action.payload
+          (value:string) => value !== action.payload
         ),
       };
       case "PRICE_FILTER":

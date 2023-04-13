@@ -11,9 +11,9 @@ const LoginedDropDownMenu = (props:{handleLogOut: () => void}) => {
           <li><Link to={"/account"} className="acc-link">{AccountDetails}</Link></li>
         </p>
         <hr />
-        <li>{Orders}</li>
-        <li>{WishList}</li>
-        <li>{Cart}</li>
+        <Link to="" className="p-link"><li>{Orders}</li></Link>
+        <Link to="/wishlist" className="p-link"><li>{WishList}</li></Link>
+        <Link to="/cart" className="p-link"><li>{Cart}</li></Link>
         <hr />
 
         <li className="login-btn">

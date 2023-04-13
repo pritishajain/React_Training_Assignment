@@ -7,4 +7,5 @@ export interface IinfoDataType {
   productCategory: string;
   productDescription: string;
   brand:string;
+  qty:number;
 }

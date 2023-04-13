@@ -93,10 +93,70 @@ export const priceFilterProducts=(priceData:IinfoDataType[])=>{
   }
 }
 
-export const getUserInfo=(userData:IuserInfo[])=>{
+export const getUserInfo=(userData:IuserInfo)=>{
   return{
     type:"GET_USER_INFO",
     payload:userData
   }
+}
 
+export const addToWishList=(productData:IinfoDataType)=>{
+  return{
+    type:"ADD_TO_WISH_LIST",
+    productData:productData
+  }
+}
+
+export const removeFromWishList=(id:number)=>{
+  return{
+    type:"REMOVE_FROM_WISH_LIST",
+    id:id
+  }
+}
+
+export const addToCart=(productData:IinfoDataType)=>{
+  return{
+    type:"ADD_TO_CART",
+    productData:productData
+  }
+}
+
+export const removeFromCart=(id:number)=>{
+  return{
+    type:"REMOVE_FROM_CART",
+    id:id
+  }
+}
+
+export const removeAddToWishList=(data:IinfoDataType)=>{
+  return{
+    type:"REMOVE_AND_ADD_TO_WISHLIST",
+    productData:data
+  }
+}
+
+export const isLoggedIn=(logIn:boolean)=>{
+  return{
+    type:"IS_LOGGED_IN",
+    logIn:logIn
+  }
+}
+
+export const emptyData=()=>{
+  return{
+    type:"EMPTY_DATA"
+  }
+}
+
+export const updateQuantity=(updatedCart:IinfoDataType[])=>{
+  return{
+    type:"UPDATE_QUANTITY",
+    updatedData:updatedCart
+  }
+}
+
+export const emptyCart=()=>{
+  return{
+    type:"EMPTY_CART"
+  }
 }

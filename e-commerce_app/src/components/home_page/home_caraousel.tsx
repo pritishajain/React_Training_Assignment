@@ -2,11 +2,13 @@ import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { LuxuryFaucetsCollection, Discount } from "../../assets/constants/constant";
+import { LuxuryFaucetsCollection, Discount} from "../../assets/constants/constant";
 import luxuryf from "../../assets/images/luxuryf.jpg";
 import luxuryf1 from "../../assets/images/luxuryf1.jpg";
 import luxuryf2 from "../../assets/images/luxuryf2.jpg";
 import "../../assets/css/home.css";
+import LatestCollection from "./latest_collection";
+import Footer from "./footer";
 
 const HomeCaraousel = () => {
   var settings = {
@@ -24,19 +26,23 @@ const HomeCaraousel = () => {
   return (
     <React.Fragment>
       <div className="hcontent">
-        <Slider {...settings}>
-          {images.map((value) => {
-            return (
-              <div className="image-box">
-                <div className="carouselcontent">
-                  <p className="hhead">{LuxuryFaucetsCollection}</p>
-                  <p className="hchild">{Discount}</p>
+        <div className="upper">
+          <Slider {...settings}>
+            {images.map((value:string) => {
+              return (
+                <div className="image-box">
+                  <div className="carouselcontent">
+                    <p className="hhead">{LuxuryFaucetsCollection}</p>
+                    <p className="hchild">{Discount}</p>
+                  </div>
+                  <img src={value} alt="carousel" width="100%" />
                 </div>
-                <img src={value} alt="carousel" width="100%" />
-              </div>
-            );
-          })}
-        </Slider>
+              );
+            })}
+          </Slider>
+        </div>
+        <LatestCollection />
+        <Footer/>
       </div>
     </React.Fragment>
   );

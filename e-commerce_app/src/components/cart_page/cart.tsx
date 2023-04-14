@@ -15,7 +15,7 @@ const Cart = () => {
 
   return (
     <React.Fragment>
-      <Title />
+    
       {userData.cart.length>0 ? <CartContent/> : <EmptyCart/>}
      
     </React.Fragment>

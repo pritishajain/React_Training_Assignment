@@ -1,19 +1,27 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Categories from "../product_page/categories";
 import { Istate } from "../../interface/product_reducer_interface";
 import { searchFilter } from "../../redux/actions/fetch_action";
 import {Home, Products, Contact} from "../../assets/constants/constant";
 import "../../assets/css/navbar.css";
 
-const NavBar = () => {
-  const [isDropDownMenu, setDropDownMenu] = useState<boolean>(false);
 
+const NavBar = () => {
+
+  const [isDropDownMenu, setDropDownMenu] = useState<boolean>(false);
+  
   const dispatch = useDispatch();
 
   const allProducts = useSelector((state: Istate) => state.productReducer.allProducts);
 
+  const location=useLocation();
+
+  if (location.pathname === "/login" || location.pathname === "/signUp" || location.pathname === "/cart") {
+    return null;
+  }
+  
   return (
     <React.Fragment>
       <div className="main">

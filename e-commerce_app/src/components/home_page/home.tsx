@@ -8,8 +8,6 @@ const Home = () => {
 
   return (
     <React.Fragment>
-      <Title />
-      <NavBar />
       <HomeCaraousel />     
     </React.Fragment>
   );

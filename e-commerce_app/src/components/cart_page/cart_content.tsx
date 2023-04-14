@@ -25,17 +25,19 @@ import 'react-toastify/dist/ReactToastify.css';
   };
   
 const CartContent = () => {
+
   const [popUp, setPopUp] = useState<boolean>(false);
   const [itemData, setItemData] = useState<IinfoDataType>(dataInfo);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isLoading,setIsLoading] = useState<boolean>(false);
 
   const userData = useSelector(
     (state: IuserState) => state.userDataReducer.userData
   );
 
   const updatedQuantity = async (itemId: number,type:string) => {
-    
+
     let index = userData.cart.findIndex((i: IinfoDataType) => i.id === itemId);
 
     let updatedCart:IinfoDataType[];
@@ -121,7 +123,8 @@ const CartContent = () => {
 
   const confirmOrder = async () => {
 
-    navigate("/orderconfirmation");
+    navigate('/orderconfirmation')
+    
     const querySnapshot = await getDocs(
       query(
         collection(db, "UserInformation"),
@@ -130,7 +133,7 @@ const CartContent = () => {
     );
     const docRef = doc(
       collection(db, "UserInformation"),
-      querySnapshot.docs[0].id
+      (querySnapshot).docs[0].id
     );
     updateDoc(docRef, {
       orderHistory: userData.cart,
@@ -201,6 +204,7 @@ const CartContent = () => {
           </div>
         </div>
         {popUp && <RemoveItem data={itemData} closePopUp={setPopUp} />}
+  
       </div>
     </React.Fragment>
   );

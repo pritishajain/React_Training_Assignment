@@ -58,8 +58,8 @@ h1{
     font-size: 20px;
     margin: 1px; 
     border: none;
-    background-color: rgb(65, 65, 65);
-     color: white; 
+    background-color: white;
+     color: black; 
     padding: 10px; 
 }
 .display-products{
@@ -81,8 +81,8 @@ h1{
     background-color: rgb(134, 107, 107);
 }
 .picons .fa-heart-o{
-    color: white;
+    color: black;
 }
 .picons .fa-heart{
-    color: red
+    color: black
 }

@@ -64,18 +64,20 @@ const Login = () => {
         const userSavedData: IsavedData = JSON.parse(localStorage.getItem("userData") || "{}");
 
         if (userSavedData.type === "wishList") {
-
-          updateDoc(docRef, {
-            wishList: [...userData.wishList, userSavedData.data],
-          });
-          dispatch(addToWishList(userSavedData.data));
+          if (userSavedData.data.id !== 0) {
+            updateDoc(docRef, {
+              wishList: [...userData.wishList, userSavedData.data],
+            });
+            dispatch(addToWishList(userSavedData.data));
+          }
           navigate("/wishlist");
           localStorage.removeItem("userData");
 
         } else if (userSavedData.type === "cart") {
-
-          updateDoc(docRef, { cart: [...userData.cart, userSavedData.data] });
-          dispatch(addToCart(userSavedData.data));
+          if (userSavedData.data.id !== 0) {
+            updateDoc(docRef, { cart: [...userData.cart, userSavedData.data] });
+            dispatch(addToCart(userSavedData.data));
+          }
           navigate("/cart");
           localStorage.removeItem("userData");
 

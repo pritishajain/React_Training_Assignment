@@ -12,6 +12,9 @@ import Account from "./title_section/account";
 import { fetchSomeData } from "../redux/actions/fetch_action";
 import { ToastContainer } from 'react-toastify';
 import OrderConfirmation from "./order_page/order_confirmation";
+import OrderHistory from "./order_page/order_history";
+import NavBar from "./navbar_section/navBar";
+import Title from "./title_section/title";
 
 const Main = () => {
 
@@ -23,6 +26,8 @@ const Main = () => {
   
   return (
     <React.Fragment>
+      <Title/>
+      <NavBar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="signUp" element={<SignUp />} />
@@ -36,6 +41,7 @@ const Main = () => {
         <Route path="cart" element={<Cart/>} />
         <Route path="contact" element={<Contact/>} />
         <Route path="/orderconfirmation" element={<OrderConfirmation/>}/>
+        <Route path="/orderhistory" element={<OrderHistory/>}/>
       </Routes>
       <ToastContainer autoClose={1000}/>
     </React.Fragment>

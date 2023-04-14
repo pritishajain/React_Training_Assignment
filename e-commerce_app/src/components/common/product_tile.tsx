@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { IuserState } from "../../interface/product_reducer_interface";
 
-const dataInfo = {
+ export const dataInfo = {
   id: 0,
   imageUrl: "",
   productName: "",
@@ -156,8 +156,9 @@ const ProductTile = (props: { list: IinfoDataType[] }) => {
                 setPopUp(true);
               }}
             ></i>
-
-            <i className="icon fa fa-shopping-cart"  onClick={() => addCart(value)}></i>
+            <i className={`icon  ${
+                isInCart(value.id) ? "fa fa-shopping-cart" : "fa fa-cart-plus"
+              }`} onClick={() => addCart(value)}></i>
           </div>
         </div>
         <div className="pcontent">

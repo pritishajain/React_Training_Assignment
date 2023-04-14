@@ -7,10 +7,10 @@ import { Hindware, Cera, Jaguar, Dsons, Products, Faucets, Sink, Tiles, Shower, 
 const Footer = () => {
   return (
     <React.Fragment>
-      <div className="footer-container">
+      <div className="footer-container" title="footerContainer">
         <div className="f-content">
           <div className="f-brands">
-            <li className="f-head">{Brands}</li>
+            <li className="f-head">{Brands}</li>  
             <li className="f-child">{Dsons}</li>
             <li className="f-child">{Jaguar}</li>
             <li className="f-child">{Hindware}</li>
@@ -33,9 +33,9 @@ const Footer = () => {
             <li className="f-head">{Contact}</li>
             <li className="f-child">{Address}</li>
             <li className="f-child">
-            <Link to="" className="fa fa-facebook"></Link>
+             <Link to="" className="fa fa-facebook"></Link>
             <Link to="" className="fa fa-youtube"></Link>
-            <Link to="" className="fa fa-instagram"></Link>
+            <Link to="" className="fa fa-instagram"></Link> 
             </li>
           </div>
         </div>

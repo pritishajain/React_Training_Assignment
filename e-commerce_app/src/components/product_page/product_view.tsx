@@ -156,9 +156,6 @@ const ProductView = (props: { text: string }) => {
 
   return (
     <React.Fragment>
-      <Title />
-      <NavBar /> 
-
       <FilterCategory showCategory={showCategory} category={category} />
 
       <FilterSubCategory

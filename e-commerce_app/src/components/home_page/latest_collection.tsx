@@ -8,11 +8,11 @@ const LatestCollection = () => {
     <React.Fragment>
         <div className="lower">
           <h1>
-            <span className="heading">{LatesTilesCollection}</span>
+            <span className="heading" title="heading">{LatesTilesCollection}</span>
           </h1>
           <div className="lhead">
             <div className="lcontent1">
-              <img src={latestT} alt="latestCollection" className="limage "></img>
+              <img src={latestT} alt="latestCollection-1" className="limage "></img>
 
               <div className="latest-content-1">
                 <p className="latest-head">{DiscountOffer}</p>
@@ -20,7 +20,7 @@ const LatestCollection = () => {
               </div>
             </div>
             <div className="lcontent2">
-              <img src={latestT1} alt="latestCollection" className="limage"></img>
+              <img src={latestT1} alt="latestCollection-2" className="limage"></img>
 
               <div className="latest-content-2">
                 <p className="latest-head">{DiscountOffer}</p>

@@ -13,8 +13,6 @@ const Account = () => {
 
   return (
     <React.Fragment>
-      <Title />
-      <NavBar />
       <div className="acc-container">
         <h1>{AccountDetails}</h1>
         <div className="acc-details">

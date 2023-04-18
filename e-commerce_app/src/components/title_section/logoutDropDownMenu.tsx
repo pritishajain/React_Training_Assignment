@@ -5,7 +5,7 @@ import { Welcome, ToAccessAccount, Login, SignUp, Orders, WishList, Cart } from 
 const LogoutDropDownMenu = () => {
   return (
     <React.Fragment>
-      <div className="dropdown-content">
+      <div className="dropdown-content" title="logout-dropdown">
         <p>
           <div className="welcome">{Welcome} </div>
           <div className="msg">{ToAccessAccount}</div>
@@ -21,7 +21,7 @@ const LogoutDropDownMenu = () => {
         </p>
         <hr />
 
-        <Link to="" className="p-link"><li>{Orders}</li></Link>
+        <Link to="/orderhistory" className="p-link"><li>{Orders}</li></Link>
         <Link to="/wishlist" className="p-link"><li>{WishList}</li></Link>
         <Link to="/cart" className="p-link"><li>{Cart}</li></Link>
       </div>

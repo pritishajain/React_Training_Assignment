@@ -16,8 +16,6 @@ describe("Title", () => {
         orderHistory:[]
     }
 
-    const loggedIn:boolean=true
-
   beforeEach(() => {
     render(
       <BrowserRouter>
@@ -33,9 +31,19 @@ describe("Title", () => {
     expect(titleContainer).toBeInTheDocument();
   });
 
+  test("logo rendering",()=>{
+    const logo = screen.getByAltText('logo');
+    expect(logo).toBeInTheDocument();
+  })
+
+  test("shopName rendering",()=>{
+    const shopName = screen.getByAltText('ShopName');
+    expect(shopName).toBeInTheDocument();
+  })
+
   test("display user's name when logged in", () => {
     act(()=>{
-        store.dispatch({type:'IS_LOGGED_IN',logIn:loggedIn});
+        store.dispatch({type:'IS_LOGGED_IN',logIn:true});
         store.dispatch({type:'GET_USER_INFO',payload:userInfoData});
     })
     const userNameElement=screen.getByText("Pritisha Jain");
@@ -49,5 +57,31 @@ describe("Title", () => {
     expect(screen.getByTitle('dropdown')).toBeInTheDocument();
   })
 
+  test("login dropdown menu is visible if user is logged in",()=>{
+    act(()=>{
+        store.dispatch({type:'IS_LOGGED_IN',logIn:true});
+    })
+
+    const profile = screen.getByTitle('hover')
+    fireEvent.mouseOver(profile);
+    expect(screen.getByTitle('login-dropdown')).toBeInTheDocument();
+  })
+
+  test("logout dropdown menu is visible if user is logged out",()=>{
+    act(()=>{
+        store.dispatch({type:'IS_LOGGED_IN',logIn:false});
+    })
+
+    const profile = screen.getByTitle('hover')
+    fireEvent.mouseOver(profile);
+    expect(screen.getByTitle('logout-dropdown')).toBeInTheDocument();
+  })
+
+  test("on clicking search button route change",()=>{
+    const searchLink = screen.getByTitle('search')
+    fireEvent.click(searchLink);
+
+    expect(location.pathname).toBe('/search/')
+  })
 
 });

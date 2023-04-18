@@ -64,15 +64,6 @@
     "@types/styled-components": "^5.1.26",
     "coverage-node": "^8.0.0",
     "matchmedia-polyfill": "^0.3.2"
-  },
-  "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.1",
-    "react-dom": "^0.14.0 || ^15.0.1"
-  },
-  "jest": {
-    "setupFiles": [
-      "./src/setupTests.js",
-      "./src/node_modules/react-scripts/config/polyfills.js"
-    ]
   }
+
 }

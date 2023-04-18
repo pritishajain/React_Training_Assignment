@@ -18,19 +18,20 @@ const NavBar = () => {
 
   const location=useLocation();
 
-  if (location.pathname === "/login" || location.pathname === "/signUp" || location.pathname === "/cart") {
+  if (location.pathname === "/login" || location.pathname === "/signUp" || location.pathname === "/cart" || location.pathname ==='/orderconfirmation') {
     return null;
   }
   
   return (
     <React.Fragment>
-      <div className="main">
+      <div className="main" title="nav">
         <div className="items">
           <Link to="/" className="nav-items">{Home}</Link>
 
           <Link
             to="/products"
             className="nav-items"
+            data-testid="product"
             onMouseOver={() => setDropDownMenu(true)}
             onMouseLeave={() => setDropDownMenu(false)}
             onClick={() => dispatch(searchFilter(allProducts))}
@@ -38,19 +39,19 @@ const NavBar = () => {
             {Products}
           </Link>
 
-          <Link to="/contact" className="nav-items">{Contact}</Link>
+          <Link to="/contact" title="contact" className="nav-items">{Contact}</Link>
         </div>
 
         <div className="icons">
-          <Link to="/wishlist">
+          <Link to="/wishlist" title="wishlist">
             <i className="fa fa-heart" ></i>
           </Link>
 
-          <Link to="/cart">
+          <Link to="/cart" title="cart">
             <i className="fa fa-shopping-cart"></i>
           </Link>
         </div>
-        {isDropDownMenu && ( <div onMouseOver={() => setDropDownMenu(true)} onMouseLeave={() => setDropDownMenu(false)}>
+        {isDropDownMenu && ( <div title="product-dropdown" onMouseOver={() => setDropDownMenu(true)} onMouseLeave={() => setDropDownMenu(false)}>
             <Categories />
           </div>
         )}

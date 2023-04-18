@@ -22,7 +22,7 @@ const NotLoginWishList = () => {
   }
   return (
    <React.Fragment>
-    <div className="w-container">
+    <div className="w-container" data-testid="login">
       <p className="w-head">PLEASE SIGN IN</p>
       <p className="w-child">Signin to view items in your WishList</p>
        <img src={addListIcon} alt="addlisticon" className="w-img"></img>

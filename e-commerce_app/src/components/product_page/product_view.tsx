@@ -165,7 +165,7 @@ const ProductView = (props: { text: string }) => {
       />
 
       <div className={show ? "display-products" : "hide-products"}>
-        <h1>{Products}</h1>
+        <h1 title="products">{Products}</h1>
         <div className="display-type">
           <div className="side">
             <FilterSideBar />

@@ -5,7 +5,7 @@ import { Welcome, Orders, WishList, Cart, AccountDetails, SignOut } from "../../
 const LoginedDropDownMenu = (props:{handleLogOut: () => void}) => {
   return (
     <React.Fragment>
-      <div className="dropdown-content">
+      <div className="dropdown-content" title="login-dropdown">
         <p>
           <div className="welcome">{Welcome}</div>
           <li><Link to={"/account"} className="acc-link">{AccountDetails}</Link></li>

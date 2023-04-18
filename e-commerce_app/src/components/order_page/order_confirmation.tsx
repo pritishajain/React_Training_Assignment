@@ -20,6 +20,8 @@ const OrderConfirmation = () => {
   },[])
 
  if(loading) return <Loading/>
+
+ 
   return (
     <React.Fragment>
       <div className="oc-container">

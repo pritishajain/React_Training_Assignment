@@ -24,7 +24,7 @@ const HomeCaraousel = () => {
   const images: string[] = [luxuryf, luxuryf1, luxuryf2];
   return (
     <React.Fragment>
-      <div className="hcontent">
+      <div className="hcontent" data-testid="home-caraousel">
         <div className="upper">
           <Slider data-testid="slider" {...settings}>
             {images.map((value:string) => {

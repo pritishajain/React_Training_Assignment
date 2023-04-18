@@ -80,7 +80,7 @@ const Title = () => {
     dispatch(searchFilter(filteredProducts));
   };
 
-  if (location.pathname === "/login" || location.pathname === "/signUp") {
+  if (location.pathname === "/login" || location.pathname === "/signUp" || location.pathname ==='/orderconfirmation') {
     return null;
   }
 
@@ -93,7 +93,7 @@ const Title = () => {
           </div>
 
           <div className="text">
-            <img src={shopName} alt="Shop Name" height="60px"></img>
+            <img src={shopName} alt="ShopName" height="60px"></img>
           </div>
         </div>
 
@@ -108,6 +108,7 @@ const Title = () => {
           ></input>
           <i className="fa fa-paper-plane"
             aria-hidden="true"
+            title="search"
             onClick={showList}
           ></i>
         </div>

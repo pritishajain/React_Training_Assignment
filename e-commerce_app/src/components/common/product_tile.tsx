@@ -139,7 +139,7 @@ const ProductTile = (props: { list: IinfoDataType[] }) => {
 
   const displayProductTile = (value: IinfoDataType) => {
     return (
-      <div className="container">
+      <div className="container" title="showProducts">
         <div className="img">
           <img src={value.imageUrl} alt="kfaucets" className="pimage"></img>
           <div className="picons">
@@ -174,7 +174,7 @@ const ProductTile = (props: { list: IinfoDataType[] }) => {
 
   return (
     <React.Fragment>
-      <div className="productTile">
+      <div className="productTile" >
         {props.list.map((value: IinfoDataType, key: number) => {
           key = value.id;
           return displayProductTile(value);

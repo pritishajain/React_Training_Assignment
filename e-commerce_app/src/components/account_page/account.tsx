@@ -1,6 +1,4 @@
 import React from "react";
-import NavBar from "../navbar_section/navBar";
-import Title from "./title";
 import { FullName, Email, AccountDetails } from "../../assets/constants/constant";
 import { useSelector } from "react-redux";
 import "../../assets/css/account.css";
@@ -13,12 +11,12 @@ const Account = () => {
 
   return (
     <React.Fragment>
-      <div className="acc-container">
+      <div className="acc-container" title="account-page">
         <h1>{AccountDetails}</h1>
         <div className="acc-details">
           <div className="acc-item">
-            <span className="ahead">{FullName}:</span>
-            <span className="chead">{userData.fullName}</span>
+            <span className="ahead" >{FullName}:</span>
+            <span className="chead" >{userData.fullName}</span>
           </div>
           <div className="acc-item">
             <span className="ahead">{Email}:</span>

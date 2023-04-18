@@ -10,7 +10,7 @@ const EmptyWishlist = () => {
 
   return (
     <React.Fragment>
-      <div className="e-cart">
+      <div className="e-cart" data-testid="emptyWishlist">
         <img src={emptyList} alt="emptywishlist" className="e-img"></img>
         <p className="e-para-1">{WishlisIsEmpty}</p>
         <p className="e-para-2">{Wish}</p>

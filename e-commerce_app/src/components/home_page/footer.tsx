@@ -1,10 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../../assets/css/footer.css";
 import { Hindware, Cera, Jaguar, Dsons, Products, Faucets, Sink, Tiles, Shower, Brands, Contact, AboutUs, Certifications, Media, Company, Address } from "../../assets/constants/constant";
 
 
 const Footer = () => {
+  const location = useLocation();
+  if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/cart" || location.pathname ==='/orderconfirmation') {
+    return null;
+  }
+  
   return (
     <React.Fragment>
       <div className="footer-container" title="footerContainer">
@@ -33,7 +38,7 @@ const Footer = () => {
             <li className="f-head">{Contact}</li>
             <li className="f-child">{Address}</li>
             <li className="f-child">
-             <Link to="" className="fa fa-facebook"></Link>
+            <Link to="" className="fa fa-facebook"></Link>
             <Link to="" className="fa fa-youtube"></Link>
             <Link to="" className="fa fa-instagram"></Link> 
             </li>

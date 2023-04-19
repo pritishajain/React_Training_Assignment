@@ -97,6 +97,21 @@ const Login = () => {
       }) 
   };
 
+  const displayInputField = (type: string, name: string) => {
+    return (
+      <div className="input-wrap">
+      <input
+        type={type}
+        name={name}
+        className="input-field"
+        autoComplete="off"
+        placeholder={name}
+        onChange={handleInputChange}
+      />
+      </div>
+    );
+  };
+
   return (
     <React.Fragment>
       <main>
@@ -121,30 +136,10 @@ const Login = () => {
                 </div>
 
                 <div className="actual-form">
-                  <div className="input-wrap">
-                    <input
-                      type="text"
-                      name="email"
-                      className="input-field"
-                      autoComplete="off"
-                      placeholder="Email"
-                      onChange={handleInputChange}
-                    />
-                  </div>
-
-                  <div className="input-wrap">
-                    <input
-                      type="password"
-                      name="password"
-                      className="input-field"
-                      autoComplete="off"
-                      placeholder="Password"
-                      onChange={handleInputChange}
-                    />
-                  </div>
-
-
+                  {displayInputField("text","email")}
+                  {displayInputField("password","password")}
                   <p className="error">{errorMsg}</p>
+                  
                   <input
                     type="submit"
                     value="Sign In"

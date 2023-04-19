@@ -1,6 +1,6 @@
 import React from "react";
-import { FullName, Email, AccountDetails } from "../../assets/constants/constant";
 import { useSelector } from "react-redux";
+import { FullName, Email, AccountDetails } from "../../assets/constants/constant";
 import "../../assets/css/account.css";
 import { IuserState } from "../../interface/product_reducer_interface";
 

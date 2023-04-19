@@ -8,7 +8,7 @@ export const SignIn: string = "Sign In";
 export const Name: string = "Name";
 export const Email: string = "Email";
 export const Password: string = "Password";
-export const ConfirmPassword: string = "Confirm Password";
+export const ConfirmPassword: string = "confirm password";
 export const PassConfirm: string =
   "Password and Confirm Password does not match";
 export const Profile: string = "Profile";
@@ -70,5 +70,20 @@ export const ViewDetails: string = "View Details";
 export const WishlisIsEmpty: string = "Your WishList is empty";
 export const Wish: string = "Let's make a wish";
 export const ContinueShopping: string = "Continue Shopping";
+export const Free: string = "FREE";
+export const TalkToUs: string = "TALK TO US";
+export const Discussion: string = "What would you like to discuss?";
+export const AgentCalling: string = "One of our Agent will call you shortly";
+export const Thanks: string = "Thank You for connecting!";
+export const MyOrders: string = "My Orders";
+export const BuyAgain: string = "Buy Again";
+export const Hey: string = "Hey! ";
+export const OrderConfirmed: string = "Your order is Confirmed!";
+export const ShippingConfirmationEmail: string = "We will send you a shipping confirmation email as soon as your order ships";
+export const Delivered: string = "Delivered";
+export const PleaseSignIn: string = "PLEASE SIGN IN";
+export const ViewWishList: string = "Signin to view items in your WishList";
+export const MyWishList: string = "My WishList";
+
 
 

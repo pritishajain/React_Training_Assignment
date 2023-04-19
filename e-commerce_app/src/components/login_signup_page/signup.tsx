@@ -4,7 +4,7 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, userCollection  } from "../../firebase";
 import { IsignUpValue } from "../../interface/signup_interface";
-import { MssLogo, GetStarted, Account, SignIn, Name, Password, ConfirmPassword, Email } from "../../assets/constants/constant";
+import { MssLogo, GetStarted, Account, SignIn, ConfirmPassword} from "../../assets/constants/constant";
 import "../../assets/css/signup.css";
 import logo from "../../assets/images/logo.png";
 import profile from "../../assets/images/profile.jpg";
@@ -102,8 +102,24 @@ const SignUp = () => {
     } 
   };
 
+  const displayInputField=(type:string,name:string,value:string)=>{
+    return(
+      <div className="input-wrap">
+      <input
+        type={type}
+        name={name}
+        value={value}
+        className="input-field"
+        autoComplete="off"
+        placeholder={name}
+        onBlur={validateInput}
+       onChange={handleInputChange}
+      />
+    </div>
+    )
+  }
+
   return (
-    
     <React.Fragment>
       <div className="box">
         <div className="inner-box">
@@ -129,46 +145,11 @@ const SignUp = () => {
               </div>
 
               <div className="actual-form">
-                <div className="input-wrap">
-                  <input
-                    type="text"
-                    name="name"
-                    value={input.name}
-                    className="input-field"
-                    autoComplete="off"
-                    placeholder={Name}
-                    onBlur={validateInput}
-                   onChange={handleInputChange}
-                  />
-                </div>
+                {displayInputField("text", "name", input.name)}
                 {error.name && <span className="error">{error.name}</span>}
-
-                <div className="input-wrap">
-                  <input
-                    type="text"
-                    name="email"
-                    value={input.email}
-                    className="input-field"
-                    autoComplete="off"
-                    onBlur={validateInput}
-                    placeholder={Email}
-                    onChange={handleInputChange}
-                  />
-                </div>
+                {displayInputField("text", "email", input.email)}
                 {error.email && <span className="error">{error.email}</span>}
-
-                <div className="input-wrap">
-                  <input
-                    type="password"
-                    name="password"
-                    value={input.password}
-                    className="input-field"
-                    autoComplete="off"
-                    placeholder={Password}
-                    onBlur={validateInput}
-                    onChange={handleInputChange}
-                  />
-                </div>
+                {displayInputField("password", "password", input.password)}
                 {error.password && (<span className="error">{error.password}</span>)}
 
                 <div className="input-wrap">
@@ -193,7 +174,6 @@ const SignUp = () => {
                 />
               </div>
             </form>
-
           </div>
         </div>
       </div>

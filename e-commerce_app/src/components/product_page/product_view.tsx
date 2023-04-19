@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import NavBar from "../navbar_section/navBar";
 import FilterCategory from "./filter_category";
 import FilterSubCategory from "./filter_sub_category";
 import FilterSideBar from "./filter_side_bar";
@@ -9,7 +8,6 @@ import ProductTile from "../common/product_tile";
 import { storeFilteredProducts } from "../../redux/actions/fetch_action";
 import { Istate } from "../../interface/product_reducer_interface";
 import { filterState } from "../../redux/reducers/filter_property_reducer";
-import Title from "../title_section/title";
 import { IinfoDataType } from "../../interface/data_interface";
 import { Products } from "../../assets/constants/constant";
 

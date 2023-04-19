@@ -16,7 +16,6 @@ interface IproductProps {
   closePopUp: (popUp: boolean) => void;
   itemData: IinfoDataType;
 }
-
 const ProductDescription = (props: IproductProps) => {
 
   const navigate = useNavigate();
@@ -30,11 +29,11 @@ const ProductDescription = (props: IproductProps) => {
     (state: IuserState) => state.userDataReducer.isLogIn
   );
 
-  const isInWishList = (id: number) => {
+  const presentInWishList = (id: number) => {
     return userData.wishList.some((product) => product.id === id);
   };
 
-  const addWishList = async (value: IinfoDataType) => {
+  const addProductToWishList = async (value: IinfoDataType) => {
     if (!isLogIn) {
       navigate("/login");
     }
@@ -50,7 +49,8 @@ const ProductDescription = (props: IproductProps) => {
       querySnapshot.docs[0].id
     );
 
-    if (isInWishList(value.id)) {
+    if (presentInWishList(value.id)) {
+
       toast.info("Removed From Wishlist")
       const updatedWishlist = userData.wishList.filter(
         (product:IinfoDataType) => product.id !== value.id
@@ -71,11 +71,11 @@ const ProductDescription = (props: IproductProps) => {
     }
   };
 
-  const isInCart = (id: number) => {
+  const presentInCart = (id: number) => {
     return userData.cart.some((product) => product.id === id);
   };
 
-  const addCart = async (value: IinfoDataType) => {
+  const addProductToCart = async (value: IinfoDataType) => {
     if (!isLogIn) {
       navigate("/login");
     }
@@ -92,7 +92,7 @@ const ProductDescription = (props: IproductProps) => {
       querySnapshot.docs[0].id
     );
 
-    if (isInCart(value.id)) {
+    if (presentInCart(value.id)) {
       toast.error("Already added in cart")
     } 
     else {
@@ -143,17 +143,17 @@ const ProductDescription = (props: IproductProps) => {
               <div className="pop-name">
                 <button
                   className="pop-btn"
-                  onClick={() => addCart(props.itemData)}
+                  onClick={() => addProductToCart(props.itemData)}
                 >
-                  {isInCart(props.itemData.id) ? (<span>{AddedToCart}</span>) : (<span>{AddToCart}</span>)}
+                  {presentInCart(props.itemData.id) ? (<span>{AddedToCart}</span>) : (<span>{AddToCart}</span>)}
                 </button>
 
                 <button
                   className="pop-btn"
-                  onClick={() => addWishList(props.itemData)}
+                  onClick={() => addProductToWishList(props.itemData)}
                 >
-                  {isInWishList(props.itemData.id) ? (<span>{Wishlisted}</span>) : (<span>{AddToWishList}</span>)}
-                  <i className={`fa ${isInWishList(props.itemData.id)? "fa-heart": "fa-heart-o"}`}></i>
+                  {presentInWishList(props.itemData.id) ? (<span>{Wishlisted}</span>) : (<span>{AddToWishList}</span>)}
+                  <i className={`fa ${presentInWishList(props.itemData.id)? "fa-heart": "fa-heart-o"}`}></i>
                 </button>
               </div>
             </div>

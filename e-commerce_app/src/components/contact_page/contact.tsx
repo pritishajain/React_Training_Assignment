@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../../assets/css/contact.css";
 import ContactUserPopUp from "./contact_user_popup";
+import { TalkToUs, Discussion } from "../../assets/constants/constant";
 
 const Contact = () => {
 
@@ -16,14 +17,14 @@ const Contact = () => {
   return (
     <React.Fragment>
       <div className="c-container">
-        <h1>TALK TO US</h1>
+        <h1>{TalkToUs}</h1>
 
         {displayInputFields("text", "name")}
         {displayInputFields("email", "email")}
         {displayInputFields("number", "number")}
 
         <div className="text">
-          <label>What would you like to discuss?</label><br></br>
+          <label>{Discussion}</label><br></br>
           <textarea name="comment" placeholder="Enter text here.."></textarea>
         </div>
 

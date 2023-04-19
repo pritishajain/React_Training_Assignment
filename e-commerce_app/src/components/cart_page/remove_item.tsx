@@ -35,17 +35,15 @@ const RemoveItem = (props: IremoveProps) => {
     );
 
     const updatedCart = userData.cart.filter(
-      (product:IinfoDataType) => product.id !== props.data.id
+      (product: IinfoDataType) => product.id !== props.data.id
     );
 
     updateDoc(docRef, { cart: updatedCart });
     props.closePopUp(false);
     dispatch(removeFromCart(props.data.id));
-
   };
 
   const removeAndAddToWishList = async () => {
-
     const querySnapshot = await getDocs(
       query(
         collection(db, "UserInformation"),
@@ -58,14 +56,13 @@ const RemoveItem = (props: IremoveProps) => {
     );
 
     const updatedCart = userData.cart.filter(
-      (product:IinfoDataType) => product.id !== props.data.id
+      (product: IinfoDataType) => product.id !== props.data.id
     );
     const updatedWishList = [...userData.wishList, props.data];
 
     updateDoc(docRef, { cart: updatedCart, wishList: updatedWishList });
     props.closePopUp(false);
     dispatch(removeAddToWishList(props.data));
-
   };
 
   return (

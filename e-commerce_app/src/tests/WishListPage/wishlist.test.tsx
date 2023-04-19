@@ -5,6 +5,7 @@ import { act, fireEvent, render,screen, waitFor } from "@testing-library/react";
 import Wishlist from "../../components/wishlist_page/wishlist";
 import { IinfoDataType } from "../../interface/data_interface";
 import NavBar from "../../components/navbar_section/navBar";
+import { ADD_TO_WISH_LIST, IS_LOGGED_IN, EMPTY_DATA} from "../../redux/action_constants";
 
 describe("WishList",()=>{
 
@@ -33,7 +34,7 @@ describe("WishList",()=>{
 
       test("display login message when user is not logged in", () => {
         act(()=>{
-            store.dispatch({type:'IS_LOGGED_IN',logIn:false});
+            store.dispatch({type:IS_LOGGED_IN,logIn:false});
         })
         const loginContainer = screen.getByTestId("login");
         expect(loginContainer).toBeInTheDocument();
@@ -41,8 +42,8 @@ describe("WishList",()=>{
 
       test("display empty wishlist message when wishlist is empty",()=>{
         act(()=>{
-            store.dispatch({type:'IS_LOGGED_IN',logIn:true});
-            store.dispatch({type:"EMPTY_DATA"})
+            store.dispatch({type:IS_LOGGED_IN,logIn:true});
+            store.dispatch({type:EMPTY_DATA})
         })
         const wishlistLink = screen.getByTitle('wishlist')
         fireEvent.click(wishlistLink);
@@ -54,8 +55,8 @@ describe("WishList",()=>{
 
       test("display wishlist items when wishlist is not empty",async()=>{
         act(()=>{
-            store.dispatch({type:'IS_LOGGED_IN',logIn:true});
-            store.dispatch({type:"ADD_TO_WISH_LIST",productData:productInfoData})
+            store.dispatch({type:IS_LOGGED_IN,logIn:true});
+            store.dispatch({type:ADD_TO_WISH_LIST,productData:productInfoData})
         })
         const wishlistLink = screen.getByTitle('wishlist')
         fireEvent.click(wishlistLink);
@@ -66,6 +67,21 @@ describe("WishList",()=>{
         const updatedwishListItems = store.getState().userDataReducer.userData.wishList;
         expect(updatedwishListItems.length).toBe(1);
         expect(updatedwishListItems[0].id).toBe(40);
+      })
+
+      test("navigate to products page when clicked on continue shopping button",()=>{
+        act(()=>{
+            store.dispatch({type:IS_LOGGED_IN,logIn:true});
+            store.dispatch({type:EMPTY_DATA})
+        })
+        const wishlistLink = screen.getByTitle('wishlist')
+        fireEvent.click(wishlistLink);
+        
+        const continueShop = screen.getByTitle('continueShop');
+        fireEvent.click(continueShop);
+
+        expect(location.pathname).toBe('/products')
+       
       })
     
 })

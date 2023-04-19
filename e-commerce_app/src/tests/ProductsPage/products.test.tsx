@@ -1,9 +1,11 @@
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "../../redux/store";
-import { act,  render, screen,} from "@testing-library/react";
+import { act,  fireEvent,  getByTitle,  render, screen,} from "@testing-library/react";
 import { IinfoDataType } from "../../interface/data_interface";
 import Products from "../../components/product_page/products";
+import { IS_LOGGED_IN, FETCH_DATA_SUCCESS } from "../../redux/action_constants";
+
 
 describe("Product", () => {
   const productInfoData: IinfoDataType[] = [
@@ -35,7 +37,6 @@ describe("Product", () => {
     render(
       <BrowserRouter>
         <Provider store={store}>
-          {/* <NavBar/> */}
           <Products />
         </Provider>
       </BrowserRouter>
@@ -49,7 +50,7 @@ describe("Product", () => {
 
   test("renders products which are added", () => {
     act(() => {
-      store.dispatch({ type: "FETCH_DATA_SUCCESS", payload: productInfoData });
+      store.dispatch({ type: FETCH_DATA_SUCCESS, payload: productInfoData });
     });
 
     const showProducts = screen.getAllByTitle("showProducts");
@@ -61,7 +62,7 @@ describe("Product", () => {
 
   test("renders those products which is added", () => {
     act(() => {
-      store.dispatch({ type: "FETCH_DATA_SUCCESS", payload: productInfoData });
+      store.dispatch({ type: FETCH_DATA_SUCCESS, payload: productInfoData });
     });
 
     const updatedProductsIList = store.getState().productReducer.allProducts;
@@ -69,4 +70,62 @@ describe("Product", () => {
     expect(updatedProductsIList[0].id).toBe(40);
     expect(updatedProductsIList[1].id).toBe(41);
   });
+
+  test("renders product image",()=>{
+    const productImage = screen.getAllByAltText("kfaucets");
+    productImage.forEach((product) => {
+        expect(product).toBeInTheDocument();
+      });
+  })
+
+  test("renders product title",()=>{
+    const productTitle= screen.getAllByTitle("ptitle");
+    productTitle.forEach((product) => {
+        expect(product).toBeInTheDocument();
+      });
+  })
+
+  test("renders product category",()=>{
+    const productCategory = screen.getAllByTitle("pcategory");
+    productCategory.forEach((product) => {
+        expect(product).toBeInTheDocument();
+      });
+  })
+
+  test("renders product price",()=>{
+    const productPrice = screen.getAllByTitle("pprice");
+    productPrice.forEach((product) => {
+        expect(product).toBeInTheDocument();
+      });
+  })
+
+  test("renders icons on product image",()=>{
+    const productIcons = screen.getAllByTitle("picons");
+    productIcons.forEach((product) => {
+        expect(product).toBeInTheDocument();
+      });
+  })
+
+  test("if user not logged then on clicking wishlist icon route to login page", () => {
+    act(() => {
+      store.dispatch({ type: IS_LOGGED_IN, logIn: false });
+    });
+
+    const wishlistIcon = screen.getAllByTitle("wishlisticon")[0];
+    fireEvent.click(wishlistIcon);
+
+    expect(location.pathname).toBe('/login');
+  });
+
+  test("if user not logged then on clicking cart icon route to login page", () => {
+    act(() => {
+      store.dispatch({ type: IS_LOGGED_IN, logIn: false });
+    });
+
+    const cartIcon = screen.getAllByTitle("cartIcon")[0];
+    fireEvent.click(cartIcon);
+
+    expect(location.pathname).toBe('/login');
+  });
+
 });

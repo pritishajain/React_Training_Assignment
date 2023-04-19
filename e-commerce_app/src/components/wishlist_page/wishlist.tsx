@@ -4,6 +4,7 @@ import ProductTile from "../common/product_tile";
 import EmptyWishlist from "./empty_wishlist";
 import { IuserState } from "../../interface/product_reducer_interface";
 import NotLoginWishList from "./not_login_wishlist";
+import { MyWishList } from "../../assets/constants/constant";
 
 const Wishlist = () => {
   const userData = useSelector(
@@ -18,7 +19,7 @@ const Wishlist = () => {
     <React.Fragment>
       {!isLogIn ? <NotLoginWishList/> : ( userData.wishList.length > 0 ? (
         <div title="wishlistPage">
-          <h1>My WishList</h1> <ProductTile list={userData.wishList} />
+          <h1>{MyWishList}</h1> <ProductTile list={userData.wishList} />
         </div>
       ) : (
         <EmptyWishlist />

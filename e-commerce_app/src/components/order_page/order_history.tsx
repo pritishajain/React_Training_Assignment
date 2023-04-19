@@ -3,12 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { IuserState } from "../../interface/product_reducer_interface";
 import { IinfoDataType } from "../../interface/data_interface";
 import "../../assets/css/order_history.css";
-import Title from "../title_section/title";
-import NavBar from "../navbar_section/navBar";
 import { addToCart } from "../../redux/actions/fetch_action";
 import { toast } from "react-toastify";
 import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { db } from "../../firebase";
+import { MyOrders, BuyAgain, Delivered } from "../../assets/constants/constant";
 
 const OrderHistory = () => {
 
@@ -41,7 +40,7 @@ const OrderHistory = () => {
         return(
            
             <div className="order-title">
-                <div className="oh-top"> <i className="fa fa-check-circle"></i>Delivered</div>
+                <div className="oh-top"> <i className="fa fa-check-circle"></i>{Delivered}</div>
                 <div className="oh-middle">
                     <div className="oh-image"><img src={data.imageUrl} alt={data.productName}></img></div>
                     <div className="oh-data">
@@ -50,7 +49,7 @@ const OrderHistory = () => {
                         </div>
                 </div>
                 <div className="oh-end">
-                    <button onClick={()=>handleClick(data)} >Buy Again</button>
+                    <button onClick={()=>handleClick(data)} >{BuyAgain}</button>
                 </div>
             </div>
         )
@@ -60,7 +59,7 @@ const OrderHistory = () => {
     <React.Fragment>
         <div className="oh-container">
             <div className="oh-content">
-                <h1>All Orders</h1>
+                <h1>{MyOrders}</h1>
                 {userData.orderHistory.map((element:IinfoDataType,key:Number)=>
                   {  key=element.id
                     return displayOrdersTile(element);

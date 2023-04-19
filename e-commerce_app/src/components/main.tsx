@@ -15,6 +15,7 @@ import OrderConfirmation from "./order_page/order_confirmation";
 import OrderHistory from "./order_page/order_history";
 import NavBar from "./navbar_section/navBar";
 import Title from "./title_section/title";
+import Footer from "./home_page/footer";
 
 const Main = () => {
 
@@ -30,7 +31,7 @@ const Main = () => {
       <NavBar/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="signUp" element={<SignUp />} />
+        <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<Login />} />
         <Route path="products" element={<Products />}/>
         <Route path="/products/:id" element={<Products />}/>
@@ -42,7 +43,9 @@ const Main = () => {
         <Route path="contact" element={<Contact/>} />
         <Route path="/orderconfirmation" element={<OrderConfirmation/>}/>
         <Route path="/orderhistory" element={<OrderHistory/>}/>
+        <Route path="*" element={<div>404 PageNotFound</div>}/>
       </Routes>
+      <Footer/>
       <ToastContainer autoClose={1000}/>
     </React.Fragment>
   );

@@ -7,7 +7,7 @@ import { emptyCart, updateQuantity } from "../../redux/actions/fetch_action";
 import { IuserState } from "../../interface/product_reducer_interface";
 import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { db } from "../../firebase";
-import { Qty, Increase, Decrease, TotalMRP, TotalAmount, PriceDetails, ConvenienceFee, DiscountOnMRP, PlaceOrder} from "../../assets/constants/constant";
+import { Qty, Increase, Decrease, TotalMRP, TotalAmount, PriceDetails, ConvenienceFee, DiscountOnMRP, PlaceOrder, Free} from "../../assets/constants/constant";
 import { toast } from "react-toastify";
 import "../../assets/css/cart.css";
 import 'react-toastify/dist/ReactToastify.css';
@@ -30,13 +30,13 @@ const CartContent = () => {
   const [itemData, setItemData] = useState<IinfoDataType>(dataInfo);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [isLoading,setIsLoading] = useState<boolean>(false);
+
 
   const userData = useSelector(
     (state: IuserState) => state.userDataReducer.userData
   );
 
-  const updatedQuantity = async (itemId: number,type:string) => {
+  const updateProductQuantity = async (itemId: number,type:string) => {
 
     let index = userData.cart.findIndex((i: IinfoDataType) => i.id === itemId);
 
@@ -83,7 +83,7 @@ const CartContent = () => {
 
   const displayCartTile = (value: IinfoDataType) => {
     return (
-      <div className="c-products">
+      <div className="c-products" >
         <div className="c-image">
           <img src={value.imageUrl} alt={value.productName}></img>
         </div>
@@ -107,9 +107,9 @@ const CartContent = () => {
 
           <div className="c-name">
             <label>{Qty}</label>
-            <button onClick={() => updatedQuantity(value.id,"increase")}>{Increase}</button>
+            <button onClick={() => updateProductQuantity(value.id,"increase")} >{Increase}</button>
             <input value={value.qty}></input>
-            <button onClick={() => updatedQuantity(value.id,"decrease")}>{Decrease}</button>
+            <button onClick={() => updateProductQuantity(value.id,"decrease")} >{Decrease}</button>
           </div>
 
           <div className="c-name">
@@ -151,12 +151,11 @@ const CartContent = () => {
         <div className="c-containerC">
           <div className="c-details">
             {userData.cart.map((value: IinfoDataType, key: number) => {
-                totalmrp = totalmrp + value.qty * value.productPrice;
-                key = value.id;
+              totalmrp = totalmrp + value.qty * value.productPrice;
+              key = value.id;
               return displayCartTile(value);
             })}
           </div>
-
           <div className="c-checkout">
             <div className="price">
               {PriceDetails}({userData.cart.length} items)
@@ -180,7 +179,7 @@ const CartContent = () => {
             <div className="total">
               <div className="t-text">{ConvenienceFee}</div>
               <div className="t-amt" id="free">
-                FREE
+                {Free}
               </div>
             </div>
             <hr />
@@ -197,14 +196,17 @@ const CartContent = () => {
             </div>
 
             <div className="order-btn">
-              <button className="place" onClick={confirmOrder}>
-               {PlaceOrder}
+              <button
+                className="place"
+                onClick={confirmOrder}
+                data-testid="placeOrder"
+              >
+                {PlaceOrder}
               </button>
             </div>
           </div>
         </div>
         {popUp && <RemoveItem data={itemData} closePopUp={setPopUp} />}
-  
       </div>
     </React.Fragment>
   );

@@ -13,7 +13,6 @@ import shopName from "../../assets/images/shopName.png";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import {db} from "../../firebase";
 import { IuserInfo } from "../../interface/user_data_interface";
-import { userState } from "../../redux/reducers/get_user_info_reducer";
 import { IinfoDataType } from "../../interface/data_interface";
 
 
@@ -25,8 +24,7 @@ const Title = () => {
 
   const [isDropDownMenu, setDropDownMenu] = useState<boolean>(false);
   const [searchResult, setSearchResult] = useState<string>("");
-  // const [userName, setUserName] = useState<string | null>(null);
-
+  
   const isLogIn = useSelector(
     (state: IuserState) => state.userDataReducer.isLogIn
   );
@@ -36,7 +34,6 @@ const Title = () => {
   useEffect(() => {
     auth.onAuthStateChanged(async(user) => {
       if (user) {
-        // setUserName(user.displayName);
         dispatch(isLoggedIn(true));
 
         const q = query(collection(db,"UserInformation"), where("email","==",user.email));
@@ -46,7 +43,6 @@ const Title = () => {
           dispatch(getUserInfo(data))
         }); 
       } else {
-        // setUserName(null);
         dispatch(isLoggedIn(false));
         dispatch(emptyData());
       }
@@ -80,7 +76,7 @@ const Title = () => {
     dispatch(searchFilter(filteredProducts));
   };
 
-  if (location.pathname === "/login" || location.pathname === "/signUp" || location.pathname ==='/orderconfirmation') {
+  if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname ==='/orderconfirmation') {
     return null;
   }
 

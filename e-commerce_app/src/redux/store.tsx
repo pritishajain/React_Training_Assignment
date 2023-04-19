@@ -7,6 +7,4 @@ const store = configureStore({
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(firestoreMiddleware),
   });
 
-//  const store =createStore(rootReducer,applyMiddleware(firestoreMiddleware))
-
 export default store;

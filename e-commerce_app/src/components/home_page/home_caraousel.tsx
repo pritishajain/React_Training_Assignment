@@ -27,7 +27,7 @@ const HomeCaraousel = () => {
       <div className="hcontent" data-testid="home-caraousel">
         <div className="upper">
           <Slider data-testid="slider" {...settings}>
-            {images.map((value:string) => {
+            {images.map((value:string,key:number) => {
               return (
                 <div className="image-box">
                   <div className="carouselcontent">
@@ -41,7 +41,7 @@ const HomeCaraousel = () => {
           </Slider>
         </div>
         <LatestCollection />
-        <Footer/>
+        <Footer/> 
       </div>
     </React.Fragment>
   );

@@ -4,6 +4,7 @@ import Title from "../../components/title_section/title";
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { IuserInfo } from "../../interface/user_data_interface";
+import { IS_LOGGED_IN, GET_USER_INFO } from "../../redux/action_constants";
 
 
 describe("Title", () => {
@@ -43,8 +44,8 @@ describe("Title", () => {
 
   test("display user's name when logged in", () => {
     act(()=>{
-        store.dispatch({type:'IS_LOGGED_IN',logIn:true});
-        store.dispatch({type:'GET_USER_INFO',payload:userInfoData});
+        store.dispatch({type:IS_LOGGED_IN,logIn:true});
+        store.dispatch({type:GET_USER_INFO,payload:userInfoData});
     })
     const userNameElement=screen.getByText("Pritisha Jain");
     expect(userNameElement).toBeInTheDocument();
@@ -59,7 +60,7 @@ describe("Title", () => {
 
   test("login dropdown menu is visible if user is logged in",()=>{
     act(()=>{
-        store.dispatch({type:'IS_LOGGED_IN',logIn:true});
+        store.dispatch({type:IS_LOGGED_IN,logIn:true});
     })
 
     const profile = screen.getByTitle('hover')
@@ -69,7 +70,7 @@ describe("Title", () => {
 
   test("logout dropdown menu is visible if user is logged out",()=>{
     act(()=>{
-        store.dispatch({type:'IS_LOGGED_IN',logIn:false});
+        store.dispatch({type:IS_LOGGED_IN,logIn:false});
     })
 
     const profile = screen.getByTitle('hover')
@@ -84,4 +85,17 @@ describe("Title", () => {
     expect(location.pathname).toBe('/search/')
   })
 
+  test("on clicking login btn in dropdown menu route changes", () => {
+    act(() => {
+      store.dispatch({ type: IS_LOGGED_IN, logIn: false });
+    });
+
+    const profile = screen.getByTitle("hover");
+    fireEvent.mouseOver(profile);
+
+    const loginButton = screen.getByTitle("loginbtn");
+    fireEvent.click(loginButton);
+
+    expect(location.pathname).toBe("/login");
+  });
 });

@@ -11,13 +11,12 @@ const LoaderContainer = styled.div`
 
 const Loading = () => {
   return (
-    
     <React.Fragment>
-       <LoaderContainer>
-      <ReactLoading type="bubbles" color="black" height={600} width={300} />
-    </LoaderContainer>
+      <LoaderContainer>
+        <ReactLoading type="bubbles" color="black" height={600} width={300} />
+      </LoaderContainer>
     </React.Fragment>
-  )
+  );
 };
 
 export default Loading;

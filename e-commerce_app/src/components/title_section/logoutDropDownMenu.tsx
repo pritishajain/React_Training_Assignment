@@ -9,12 +9,12 @@ const LogoutDropDownMenu = () => {
         <p>
           <div className="welcome">{Welcome} </div>
           <div className="msg">{ToAccessAccount}</div>
-          <li className="login-btn">
-            <Link to="/login" className="link">
+          <li className="login-btn" >
+            <Link to="/login" className="link" title="loginbtn">
               {Login}
             </Link>
             /
-            <Link to="/signUp" className="link">
+            <Link to="/signup" className="link" title="signupbtn">
               {SignUp}
             </Link>
           </li>

@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { IuserState } from "../../interface/product_reducer_interface";
 
+
  export const dataInfo = {
   id: 0,
   imageUrl: "",
@@ -38,7 +39,7 @@ const ProductTile = (props: { list: IinfoDataType[] }) => {
     (state: IuserState) => state.userDataReducer.isLogIn
   );
 
-  const isInWishList = (id: number) => {
+  const presentInWishList = (id: number) => {
     return userData.wishList.some((product) => product.id === id);
   };
 
@@ -46,7 +47,7 @@ const ProductTile = (props: { list: IinfoDataType[] }) => {
     data:IinfoDataType,
     type:string
   }
-  const addWishList = async (value: IinfoDataType) => {
+  const addProductToWishList = async (value: IinfoDataType) => {
 
     if(!isLogIn)
     {
@@ -70,7 +71,7 @@ const ProductTile = (props: { list: IinfoDataType[] }) => {
       querySnapshot.docs[0].id
     );
 
-    if (isInWishList(value.id)) {
+    if (presentInWishList(value.id)) {
       toast.info("Removed From Wishlist")
       const updatedWishlist = userData.wishList.filter((product:IinfoDataType) => product.id !== value.id);
 
@@ -87,11 +88,11 @@ const ProductTile = (props: { list: IinfoDataType[] }) => {
     }
   };
 
-  const isInCart = (id: number) => {
+  const presentInCart = (id: number) => {
     return userData.cart.some((product) => product.id === id);
   };
 
-  const addCart = async (value: IinfoDataType) => {
+  const addProductToCart = async (value: IinfoDataType) => {
 
     if(!isLogIn)
     {
@@ -124,17 +125,16 @@ const ProductTile = (props: { list: IinfoDataType[] }) => {
     dispatch(removeFromWishList(value.id));
 
 
-    if (isInCart(value.id)) {
+    if (presentInCart(value.id)) {
       toast.error("Already added in cart")
+
     } else {
       toast.success("Successfully Added to cart")
       updateDoc(docRef, {
         cart: [...userData.cart, value],
       });
       dispatch(addToCart(value));
-     
-    }
-   
+    } 
   };
 
   const displayProductTile = (value: IinfoDataType) => {
@@ -142,12 +142,12 @@ const ProductTile = (props: { list: IinfoDataType[] }) => {
       <div className="container" title="showProducts">
         <div className="img">
           <img src={value.imageUrl} alt="kfaucets" className="pimage"></img>
-          <div className="picons">
-            <i
+          <div className="picons" title="picons">
+            <i title="wishlisticon"
               className={`icon fa ${
-                isInWishList(value.id) ? "fa-heart" : "fa-heart-o"
-              }`}
-              onClick={() => addWishList(value)}
+                presentInWishList(value.id) ? "fa-heart" : "fa-heart-o"
+              }` }
+              onClick={() => addProductToWishList(value)}
             ></i>
             <i
               className="icon fa fa-eye"
@@ -156,17 +156,17 @@ const ProductTile = (props: { list: IinfoDataType[] }) => {
                 setPopUp(true);
               }}
             ></i>
-            <i className={`icon  ${
-                isInCart(value.id) ? "fa fa-shopping-cart" : "fa fa-cart-plus"
-              }`} onClick={() => addCart(value)}></i>
+            <i title="cartIcon" className={`icon  ${
+                presentInCart(value.id) ? "fa fa-shopping-cart" : "fa fa-cart-plus"
+              }`} onClick={() => addProductToCart(value)}></i>
           </div>
         </div>
         <div className="pcontent">
-          <div className="ptitle">{value.productName}</div>
-          <div className="pcategory">
+          <div className="ptitle" title="ptitle">{value.productName}</div>
+          <div className="pcategory" title="pcategory">
             {value.productCategory}:{value.productSubCategory}
           </div>
-          <div className="pprice"><i className="fa fa-rupee"></i>{value.productPrice}</div>
+          <div className="pprice" title="pprice"><i className="fa fa-rupee"></i>{value.productPrice}</div>
         </div>
       </div>
     );

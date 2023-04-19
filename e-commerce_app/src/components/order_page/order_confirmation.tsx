@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { IuserState } from "../../interface/product_reducer_interface";
 import "../../assets/css/order_confirmation.css";
 import Loading from "../loading_comp/loading";
+import { Hey, OrderConfirmed, ShippingConfirmationEmail, ContinueShopping } from "../../assets/constants/constant";
 
 const OrderConfirmation = () => {
   const [loading, setLoading] = useState(true);
@@ -24,13 +25,13 @@ const OrderConfirmation = () => {
  
   return (
     <React.Fragment>
-      <div className="oc-container">
+      <div className="oc-container" title="order-confirmation">
         <div className="oc-content">
         <i className="fa fa-check-circle"></i>
-        <p>Hey! {userData.fullName}</p>
-        <h1>Your order is Confirmed!</h1>
-        <p>We will send you a shipping confirmation email as soon as your order ships</p>
-        <button className="oc-button" onClick={() => navigate("/products")}>Continue Shopping</button>
+        <p>{Hey} {userData.fullName}</p>
+        <h1>{OrderConfirmed}</h1>
+        <p>{ShippingConfirmationEmail}</p>
+        <button className="oc-button" onClick={() => navigate("/products")}>{ContinueShopping}</button>
         </div>
       </div>
     </React.Fragment>

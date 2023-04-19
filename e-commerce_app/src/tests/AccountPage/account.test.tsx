@@ -4,6 +4,7 @@ import { IuserInfo } from "../../interface/user_data_interface";
 import { act } from "react-dom/test-utils";
 import { Provider } from "react-redux";
 import store from "../../redux/store";
+import { IS_LOGGED_IN, GET_USER_INFO } from "../../redux/action_constants";
 
 describe("Account", () => {
   const userInfoData: IuserInfo = {
@@ -29,8 +30,8 @@ describe("Account", () => {
 
   test("name of user is displayed", () => {
     act(() => {
-      store.dispatch({ type: "IS_LOGGED_IN", logIn: true });
-      store.dispatch({ type: "GET_USER_INFO", payload: userInfoData });
+      store.dispatch({ type: IS_LOGGED_IN, logIn: true });
+      store.dispatch({ type: GET_USER_INFO, payload: userInfoData });
     });
     const accountName = screen.getByText("Pritisha Jain");
     expect(accountName).toBeInTheDocument();
@@ -38,8 +39,8 @@ describe("Account", () => {
 
   test("email of user is displayed", () => {
     act(() => {
-      store.dispatch({ type: "IS_LOGGED_IN", logIn: true });
-      store.dispatch({ type: "GET_USER_INFO", payload: userInfoData });
+      store.dispatch({ type: IS_LOGGED_IN, logIn: true });
+      store.dispatch({ type: GET_USER_INFO, payload: userInfoData });
     });
     const accountEmail = screen.getByText("pritishajain05@gmail.com");
     expect(accountEmail).toBeInTheDocument();

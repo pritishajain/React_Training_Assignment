@@ -82,7 +82,7 @@ const Title = () => {
 
   return (
     <React.Fragment>
-      <div className="head" title="titleHead">
+      <div className="head" data-testid="titleHead">
         <div className="logo-home">
           <div className="img">
             <img src={logo} alt="logo" height="60px"></img>
@@ -104,7 +104,7 @@ const Title = () => {
           ></input>
           <i className="fa fa-paper-plane"
             aria-hidden="true"
-            title="search"
+            data-testid="search"
             onClick={showList}
           ></i>
         </div>
@@ -115,7 +115,7 @@ const Title = () => {
             className="user"
             onMouseOver={() => setDropDownMenu(true)}
             onMouseLeave={() => setDropDownMenu(false)}
-            title="hover"
+            data-testid="hover"
           >
             {isLogIn && userData.fullName}
             {!isLogIn && Profile}
@@ -126,7 +126,7 @@ const Title = () => {
           <div
             onMouseOver={() => setDropDownMenu(true)}
             onMouseLeave={() => setDropDownMenu(false)}
-            title="dropdown"
+            data-testid="dropdown"
           >
             <Menu isLoggedIn={isLogIn} handleLogOut={handleLogOut} />
           </div>

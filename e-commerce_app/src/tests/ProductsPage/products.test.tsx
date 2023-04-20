@@ -44,7 +44,7 @@ describe("Product", () => {
   });
 
   test("renders product page", () => {
-    const productContainer = screen.getByTitle("products");
+    const productContainer = screen.getByTestId("products");
     expect(productContainer).toBeInTheDocument();
   });
 
@@ -53,7 +53,7 @@ describe("Product", () => {
       store.dispatch({ type: FETCH_DATA_SUCCESS, payload: productInfoData });
     });
 
-    const showProducts = screen.getAllByTitle("showProducts");
+    const showProducts = screen.getAllByTestId("showProducts");
 
     showProducts.forEach((product) => {
       expect(product).toBeInTheDocument();
@@ -79,28 +79,28 @@ describe("Product", () => {
   })
 
   test("renders product title",()=>{
-    const productTitle= screen.getAllByTitle("ptitle");
+    const productTitle= screen.getAllByTestId("ptitle");
     productTitle.forEach((product) => {
         expect(product).toBeInTheDocument();
       });
   })
 
   test("renders product category",()=>{
-    const productCategory = screen.getAllByTitle("pcategory");
+    const productCategory = screen.getAllByTestId("pcategory");
     productCategory.forEach((product) => {
         expect(product).toBeInTheDocument();
       });
   })
 
   test("renders product price",()=>{
-    const productPrice = screen.getAllByTitle("pprice");
+    const productPrice = screen.getAllByTestId("pprice");
     productPrice.forEach((product) => {
         expect(product).toBeInTheDocument();
       });
   })
 
   test("renders icons on product image",()=>{
-    const productIcons = screen.getAllByTitle("picons");
+    const productIcons = screen.getAllByTestId("picons");
     productIcons.forEach((product) => {
         expect(product).toBeInTheDocument();
       });
@@ -111,7 +111,7 @@ describe("Product", () => {
       store.dispatch({ type: IS_LOGGED_IN, logIn: false });
     });
 
-    const wishlistIcon = screen.getAllByTitle("wishlisticon")[0];
+    const wishlistIcon = screen.getAllByTestId("wishlisticon")[0];
     fireEvent.click(wishlistIcon);
 
     expect(location.pathname).toBe('/login');
@@ -122,7 +122,7 @@ describe("Product", () => {
       store.dispatch({ type: IS_LOGGED_IN, logIn: false });
     });
 
-    const cartIcon = screen.getAllByTitle("cartIcon")[0];
+    const cartIcon = screen.getAllByTestId("cartIcon")[0];
     fireEvent.click(cartIcon);
 
     expect(location.pathname).toBe('/login');

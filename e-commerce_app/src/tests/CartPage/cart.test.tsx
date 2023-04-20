@@ -47,7 +47,7 @@ describe("Cart",()=>{
       });
 
       test("renders cart page component",()=>{
-        const cartPage = screen.getByTitle("cartPage")
+        const cartPage = screen.getByTestId("cartPage")
         expect(cartPage).toBeInTheDocument();
       })
 
@@ -56,7 +56,7 @@ describe("Cart",()=>{
             store.dispatch({type:EMPTY_DATA})
         })
         
-        const emptyCartMessage = screen.getByTitle('emptyCart')
+        const emptyCartMessage = screen.getByTestId('emptyCart')
        expect(emptyCartMessage).toBeInTheDocument()
        
       })
@@ -78,7 +78,7 @@ describe("Cart",()=>{
             store.dispatch({type:EMPTY_DATA})
         })
       
-        const addfromWishlist = screen.getByTitle('addfromWishlist');
+        const addfromWishlist = screen.getByTestId('addfromWishlist');
         fireEvent.click(addfromWishlist);
 
         expect(location.pathname).toBe('/wishlist')

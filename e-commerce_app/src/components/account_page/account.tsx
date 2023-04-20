@@ -11,7 +11,7 @@ const Account = () => {
 
   return (
     <React.Fragment>
-      <div className="acc-container" title="account-page">
+      <div className="acc-container" data-testid="account-page">
         <h1>{AccountDetails}</h1>
         <div className="acc-details">
           <div className="acc-item">

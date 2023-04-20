@@ -18,7 +18,7 @@ const Wishlist = () => {
   return (
     <React.Fragment>
       {!isLogIn ? <NotLoginWishList/> : ( userData.wishList.length > 0 ? (
-        <div title="wishlistPage">
+        <div data-testid="wishlistPage">
           <h1>{MyWishList}</h1> <ProductTile list={userData.wishList} />
         </div>
       ) : (

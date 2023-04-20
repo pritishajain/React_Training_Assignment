@@ -5,11 +5,11 @@ import FilterCategory from "./filter_category";
 import FilterSubCategory from "./filter_sub_category";
 import FilterSideBar from "./filter_side_bar";
 import ProductTile from "../common/product_tile";
-import { storeFilteredProducts } from "../../redux/actions/fetch_action";
+import {  storeFilteredProducts } from "../../redux/actions/fetch_action";
 import { Istate } from "../../interface/product_reducer_interface";
 import { filterState } from "../../redux/reducers/filter_property_reducer";
 import { IinfoDataType } from "../../interface/data_interface";
-import { Products } from "../../assets/constants/constant";
+import {  Products } from "../../assets/constants/constant";
 
 
 interface filteredState {
@@ -31,7 +31,7 @@ const ProductView = (props: { text: string }) => {
   const [category, setCategory] = useState<string>("");
   const [subCategory, setSubCategory] = useState<string>("");
 
-  const { id } = useParams();
+  const { id } = useParams()
   const { pid } = useParams();
 
   const dispatch = useDispatch();
@@ -151,7 +151,6 @@ const ProductView = (props: { text: string }) => {
     return product4;
   };
 
-
   return (
     <React.Fragment>
       <FilterCategory showCategory={showCategory} category={category} />
@@ -163,7 +162,8 @@ const ProductView = (props: { text: string }) => {
       />
 
       <div className={show ? "display-products" : "hide-products"}>
-        <h1 title="products">{Products}</h1>
+
+       <h1 data-testid="products">{Products}</h1>
         <div className="display-type">
           <div className="side">
             <FilterSideBar />

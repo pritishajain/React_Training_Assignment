@@ -8,7 +8,7 @@ const LatestCollection = () => {
     <React.Fragment>
         <div className="lower">
           <h1>
-            <span className="heading" title="heading">{LatesTilesCollection}</span>
+            <span className="heading" data-testid="heading">{LatesTilesCollection}</span>
           </h1>
           <div className="lhead">
             <div className="lcontent1">

@@ -14,7 +14,7 @@ const EmptyWishlist = () => {
         <img src={emptyList} alt="emptywishlist" className="e-img"></img>
         <p className="e-para-1">{WishlisIsEmpty}</p>
         <p className="e-para-2">{Wish}</p>
-        <button className="e-button" onClick={() => navigate("/products")} title="continueShop">
+        <button className="e-button" onClick={() => navigate("/products")} data-testid="continueShop">
          {ContinueShopping}
         </button>
       </div>

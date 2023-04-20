@@ -10,7 +10,7 @@ describe("LatestCollection", () => {
   });
 
   test("renders heading in document", () => {
-    const headingElement = screen.getByTitle("heading");
+    const headingElement = screen.getByTestId("heading");
 
     expect(headingElement).toBeInTheDocument();
   });

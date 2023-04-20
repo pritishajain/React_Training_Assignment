@@ -5,16 +5,16 @@ import { Welcome, ToAccessAccount, Login, SignUp, Orders, WishList, Cart } from 
 const LogoutDropDownMenu = () => {
   return (
     <React.Fragment>
-      <div className="dropdown-content" title="logout-dropdown">
+      <div className="dropdown-content" data-testid="logout-dropdown">
         <p>
           <div className="welcome">{Welcome} </div>
           <div className="msg">{ToAccessAccount}</div>
           <li className="login-btn" >
-            <Link to="/login" className="link" title="loginbtn">
+            <Link to="/login" className="link" data-testid="loginbtn">
               {Login}
             </Link>
             /
-            <Link to="/signup" className="link" title="signupbtn">
+            <Link to="/signup" className="link" data-testid="signupbtn">
               {SignUp}
             </Link>
           </li>

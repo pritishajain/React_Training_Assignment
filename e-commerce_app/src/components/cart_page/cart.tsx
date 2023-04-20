@@ -12,7 +12,7 @@ const Cart = () => {
 
   return (
     <React.Fragment>
-      <div title="cartPage">
+      <div data-testid="cartPage">
         {userData.cart.length > 0 ? <CartContent /> : <EmptyCart />}
       </div>
     </React.Fragment>

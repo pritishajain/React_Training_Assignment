@@ -14,10 +14,10 @@ const FilterCategory = (props: filterProps) => {
   
   const product = useSelector((state: Istate) => state.productReducer.products);
 
-  var filterList = product.filter(
+  let filterList = product.filter(
     (element:IinfoDataType) => element.productCategory === props.category
   );
-
+ 
   return (
     <React.Fragment>
       <div className={props.showCategory ? "displayk-products" : "hidek-products"}>

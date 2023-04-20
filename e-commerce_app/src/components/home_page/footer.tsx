@@ -12,7 +12,7 @@ const Footer = () => {
   
   return (
     <React.Fragment>
-      <div className="footer-container" title="footerContainer">
+      <div className="footer-container" data-testid="footerContainer">
         <div className="f-content">
           <div className="f-brands">
             <li className="f-head">{Brands}</li>  

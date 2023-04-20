@@ -10,7 +10,7 @@ describe("Footer", () => {
       </BrowserRouter>
     );
 
-    const footerElement = screen.getByTitle("footerContainer");
+    const footerElement = screen.getByTestId("footerContainer");
     expect(footerElement).toBeInTheDocument();
   });
 });

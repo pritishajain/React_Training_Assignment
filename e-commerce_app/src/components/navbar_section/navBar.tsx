@@ -24,7 +24,7 @@ const NavBar = () => {
   
   return (
     <React.Fragment>
-      <div className="main" title="nav">
+      <div className="main" data-testid="nav">
         <div className="items">
           <Link to="/" className="nav-items">
             {Home}
@@ -41,24 +41,24 @@ const NavBar = () => {
             {Products}
           </Link>
 
-          <Link to="/contact" title="contact" className="nav-items">
+          <Link to="/contact" data-testid="contact" className="nav-items">
             {Contact}
           </Link>
         </div>
 
         <div className="icons">
-          <Link to="/wishlist" title="wishlist">
+          <Link to="/wishlist" data-testid="wishlist">
             <i className="fa fa-heart"></i>
           </Link>
 
-          <Link to="/cart" title="cart">
+          <Link to="/cart" data-testid="cart">
             <i className="fa fa-shopping-cart"></i>
           </Link>
         </div>
 
         {isDropDownMenu && (
           <div
-            title="product-dropdown"
+          data-testid="product-dropdown"
             onMouseOver={() => setDropDownMenu(true)}
             onMouseLeave={() => setDropDownMenu(false)}
           >

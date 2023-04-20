@@ -24,7 +24,7 @@ describe("Account", () => {
   });
 
   test("present in document", () => {
-    const accountElement = screen.getByTitle("account-page");
+    const accountElement = screen.getByTestId("account-page");
     expect(accountElement).toBeInTheDocument();
   });
 

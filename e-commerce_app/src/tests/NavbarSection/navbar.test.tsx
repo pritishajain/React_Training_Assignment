@@ -17,7 +17,7 @@ describe("Navbar",()=>{
       });
 
       test("renders correctly", () => {
-        const navContainer = screen.getByTitle("nav");
+        const navContainer = screen.getByTestId("nav");
         expect(navContainer).toBeInTheDocument();
       });
 
@@ -29,21 +29,21 @@ describe("Navbar",()=>{
       })
 
       test("on clicking contacts in navbar route changes",()=>{
-        const contactLink = screen.getByTitle('contact')
+        const contactLink = screen.getByTestId('contact')
         fireEvent.click(contactLink);
     
         expect(location.pathname).toBe('/contact')
       })
 
       test("on clicking wishlist icon in navbar route changes",()=>{
-        const wishlistLink = screen.getByTitle('wishlist')
+        const wishlistLink = screen.getByTestId('wishlist')
         fireEvent.click(wishlistLink);
     
         expect(location.pathname).toBe('/wishlist')
       })
 
       test("on clicking cart icon in navbar route changes",()=>{
-        const cartLink = screen.getByTitle('cart')
+        const cartLink = screen.getByTestId('cart')
         fireEvent.click(cartLink);
     
         expect(location.pathname).toBe('/cart')

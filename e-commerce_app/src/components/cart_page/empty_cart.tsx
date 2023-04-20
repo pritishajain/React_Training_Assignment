@@ -10,11 +10,11 @@ const EmptyCart = () => {
 
   return (
     <React.Fragment>
-      <div className="e-cart" title="emptyCart">
+      <div className="e-cart" data-testid="emptyCart">
         <img src={emptycart} alt="empty cart" className="e-img"></img>
         <p className="e-para-1">{CartIsLight}</p>
         <p className="e-para-2">{NothingInBag}</p>
-        <button className="e-button" onClick={() => navigate("/wishlist")} title="addfromWishlist">{AddFromWishList}</button>
+        <button className="e-button" onClick={() => navigate("/wishlist")} data-testid="addfromWishlist">{AddFromWishList}</button>
       </div>
     </React.Fragment>
   );

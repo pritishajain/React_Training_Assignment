@@ -36,8 +36,11 @@
 }
 .oh-end{
    width: 100%;
+   margin: 10px;
+
 }
 .oh-end button{
+    
     width: 30%;
     margin: auto;
     padding: 10px;

@@ -28,7 +28,7 @@ describe("Title", () => {
   });
 
   test("renders correctly", () => {
-    const titleContainer = screen.getByTitle("titleHead");
+    const titleContainer = screen.getByTestId("titleHead");
     expect(titleContainer).toBeInTheDocument();
   });
 
@@ -52,10 +52,10 @@ describe("Title", () => {
   });
 
   test("dropdown visible on hover",()=>{
-    const profile = screen.getByTitle('hover')
+    const profile = screen.getByTestId('hover')
     fireEvent.mouseOver(profile);
   
-    expect(screen.getByTitle('dropdown')).toBeInTheDocument();
+    expect(screen.getByTestId('dropdown')).toBeInTheDocument();
   })
 
   test("login dropdown menu is visible if user is logged in",()=>{
@@ -63,9 +63,9 @@ describe("Title", () => {
         store.dispatch({type:IS_LOGGED_IN,logIn:true});
     })
 
-    const profile = screen.getByTitle('hover')
+    const profile = screen.getByTestId('hover')
     fireEvent.mouseOver(profile);
-    expect(screen.getByTitle('login-dropdown')).toBeInTheDocument();
+    expect(screen.getByTestId('login-dropdown')).toBeInTheDocument();
   })
 
   test("logout dropdown menu is visible if user is logged out",()=>{
@@ -73,13 +73,13 @@ describe("Title", () => {
         store.dispatch({type:IS_LOGGED_IN,logIn:false});
     })
 
-    const profile = screen.getByTitle('hover')
+    const profile = screen.getByTestId('hover')
     fireEvent.mouseOver(profile);
-    expect(screen.getByTitle('logout-dropdown')).toBeInTheDocument();
+    expect(screen.getByTestId('logout-dropdown')).toBeInTheDocument();
   })
 
   test("on clicking search button route change",()=>{
-    const searchLink = screen.getByTitle('search')
+    const searchLink = screen.getByTestId('search')
     fireEvent.click(searchLink);
 
     expect(location.pathname).toBe('/search/')
@@ -90,10 +90,10 @@ describe("Title", () => {
       store.dispatch({ type: IS_LOGGED_IN, logIn: false });
     });
 
-    const profile = screen.getByTitle("hover");
+    const profile = screen.getByTestId("hover");
     fireEvent.mouseOver(profile);
 
-    const loginButton = screen.getByTitle("loginbtn");
+    const loginButton = screen.getByTestId("loginbtn");
     fireEvent.click(loginButton);
 
     expect(location.pathname).toBe("/login");

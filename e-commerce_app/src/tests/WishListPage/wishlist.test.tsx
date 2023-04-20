@@ -45,7 +45,7 @@ describe("WishList",()=>{
             store.dispatch({type:IS_LOGGED_IN,logIn:true});
             store.dispatch({type:EMPTY_DATA})
         })
-        const wishlistLink = screen.getByTitle('wishlist')
+        const wishlistLink = screen.getByTestId('wishlist')
         fireEvent.click(wishlistLink);
         
         const emptyWishListMessage = screen.getByTestId('emptyWishlist')
@@ -58,10 +58,10 @@ describe("WishList",()=>{
             store.dispatch({type:IS_LOGGED_IN,logIn:true});
             store.dispatch({type:ADD_TO_WISH_LIST,productData:productInfoData})
         })
-        const wishlistLink = screen.getByTitle('wishlist')
+        const wishlistLink = screen.getByTestId('wishlist')
         fireEvent.click(wishlistLink);
     
-        const wishlistPage=screen.getByTitle('wishlistPage')
+        const wishlistPage=screen.getByTestId('wishlistPage')
         expect(wishlistPage).toBeInTheDocument();
 
         const updatedwishListItems = store.getState().userDataReducer.userData.wishList;
@@ -74,10 +74,10 @@ describe("WishList",()=>{
             store.dispatch({type:IS_LOGGED_IN,logIn:true});
             store.dispatch({type:EMPTY_DATA})
         })
-        const wishlistLink = screen.getByTitle('wishlist')
+        const wishlistLink = screen.getByTestId('wishlist')
         fireEvent.click(wishlistLink);
         
-        const continueShop = screen.getByTitle('continueShop');
+        const continueShop = screen.getByTestId('continueShop');
         fireEvent.click(continueShop);
 
         expect(location.pathname).toBe('/products')

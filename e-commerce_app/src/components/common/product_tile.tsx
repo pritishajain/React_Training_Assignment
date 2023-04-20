@@ -9,6 +9,7 @@ import {db} from "../../firebase";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { IuserState } from "../../interface/product_reducer_interface";
+import Pagination from "./pagination";
 
 
  export const dataInfo = {
@@ -26,6 +27,7 @@ import { IuserState } from "../../interface/product_reducer_interface";
 
 const ProductTile = (props: { list: IinfoDataType[] }) => {
 
+  
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [popUp, setPopUp] = useState<boolean>(false);
@@ -139,11 +141,11 @@ const ProductTile = (props: { list: IinfoDataType[] }) => {
 
   const displayProductTile = (value: IinfoDataType) => {
     return (
-      <div className="container" title="showProducts">
+      <div className="container" data-testid="showProducts">
         <div className="img">
           <img src={value.imageUrl} alt="kfaucets" className="pimage"></img>
-          <div className="picons" title="picons">
-            <i title="wishlisticon"
+          <div className="picons" data-testid="picons">
+            <i data-testid="wishlisticon"
               className={`icon fa ${
                 presentInWishList(value.id) ? "fa-heart" : "fa-heart-o"
               }` }
@@ -156,26 +158,41 @@ const ProductTile = (props: { list: IinfoDataType[] }) => {
                 setPopUp(true);
               }}
             ></i>
-            <i title="cartIcon" className={`icon  ${
+            <i data-testid="cartIcon" className={`icon  ${
                 presentInCart(value.id) ? "fa fa-shopping-cart" : "fa fa-cart-plus"
               }`} onClick={() => addProductToCart(value)}></i>
           </div>
         </div>
         <div className="pcontent">
-          <div className="ptitle" title="ptitle">{value.productName}</div>
-          <div className="pcategory" title="pcategory">
+          <div className="ptitle" data-testid="ptitle">{value.productName}</div>
+          <div className="pcategory" data-testid="pcategory">
             {value.productCategory}:{value.productSubCategory}
           </div>
-          <div className="pprice" title="pprice"><i className="fa fa-rupee"></i>{value.productPrice}</div>
+          <div className="pprice" data-testid="pprice"><i className="fa fa-rupee"></i>{value.productPrice}</div>
         </div>
       </div>
     );
   };
 
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [productsPerPage, setProductsPerPage] = useState<number>(12);
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+
+  const currentProducts = props.list.slice(indexOfFirstProduct, indexOfLastProduct);
+  
+  // const pageNumbers = [];
+  // for (let i = 1; i <= Math.ceil(props.list.length / productsPerPage); i++) {
+  //   pageNumbers.push(i);
+  // }
+
+   const paginate = (pageNumber:number) => setCurrentPage(pageNumber);
+
   return (
     <React.Fragment>
       <div className="productTile" >
-        {props.list.map((value: IinfoDataType, key: number) => {
+        {currentProducts.map((value: IinfoDataType, key: number) => {
           key = value.id;
           return displayProductTile(value);
         })}
@@ -183,7 +200,15 @@ const ProductTile = (props: { list: IinfoDataType[] }) => {
         {popUp && (
           <ProductDescription closePopUp={setPopUp} itemData={itemData} />
         )}
+
       </div>
+      <Pagination
+        currentPage={currentPage}
+        paginate={paginate}
+        productsPerPage={productsPerPage}
+        totalProducts={props.list.length}
+      />
+
     </React.Fragment>
   );
 };

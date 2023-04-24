@@ -34,15 +34,13 @@ const Main = () => {
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<Login />} />
         <Route path="products" element={<Products />}/>
-        <Route path="/products/:id" element={<Products />}/>
-        <Route path="/products/:id/:pid" element={<Products />} /> 
-        <Route path="/search/:keyword" element={<Products/>} />
+        <Route path="search/:keyword" element={<Products/>} />
         <Route path="account" element={<Account />} />
         <Route path="wishlist" element={<Wishlist/>} />
         <Route path="cart" element={<Cart/>} />
         <Route path="contact" element={<Contact/>} />
-        <Route path="/orderconfirmation" element={<OrderConfirmation/>}/>
-        <Route path="/orderhistory" element={<OrderHistory/>}/>
+        <Route path="orderconfirmation" element={<OrderConfirmation/>}/>
+        <Route path="orderhistory" element={<OrderHistory/>}/>
         <Route path="*" element={<div>404 PageNotFound</div>}/>
       </Routes>
       <Footer/>

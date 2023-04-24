@@ -5,6 +5,7 @@ import ProductView from "./product_view";
 import "../../assets/css/product.css";
 
 const Products = () => {
+  
   const searchPage = useSelector(
     (state: Istate) => state.productReducer.isSearching
   );

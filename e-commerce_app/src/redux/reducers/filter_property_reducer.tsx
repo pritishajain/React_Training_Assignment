@@ -9,7 +9,7 @@ export interface filterAction {
 }
 
 export interface filterState {
-  category: string[];
+  category: string;
   subCategory: string[];
   brand: string[];
   maxRange:number;
@@ -17,7 +17,7 @@ export interface filterState {
 }
 
 const initialState: filterState = {
-  category: [],
+  category: "All Products",
   subCategory: [],
   brand: [],
   maxRange: 0,
@@ -32,7 +32,7 @@ const filterPropertyReducer = (
     case ADD_CATEGORY:
       return {
         ...state,
-        category: [...state.category, action.payload],
+        category: action.payload
       };
     case ADD_SUB_CATEGORY:
       return {
@@ -44,13 +44,13 @@ const filterPropertyReducer = (
         ...state,
         brand: [...state.brand, action.payload],
       };
-    case REMOVE_CATEGORY:
-      return {
-        ...state,
-        category: [...state.category].filter(
-          (value:string) => value !== action.payload
-        ),
-      };
+    // case REMOVE_CATEGORY:
+    //   return {
+    //     ...state,
+    //     category: [...state.category].filter(
+    //       (value:string) => value !== action.payload
+    //     ),
+    //   };
     case REMOVE_SUB_CATEGORY:
       return {
         ...state,

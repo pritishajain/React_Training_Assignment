@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import Categories from "../product_page/categories";
 import { Istate } from "../../interface/product_reducer_interface";
 import { searchFilter } from "../../redux/actions/fetch_action";
 import {Home, Products, Contact} from "../../assets/constants/constant";
@@ -10,8 +9,6 @@ import "../../assets/css/navbar.css";
 
 const NavBar = () => {
 
-  const [isDropDownMenu, setDropDownMenu] = useState<boolean>(false);
-  
   const dispatch = useDispatch();
 
   const allProducts = useSelector((state: Istate) => state.productReducer.allProducts);
@@ -34,9 +31,7 @@ const NavBar = () => {
             to="/products"
             className="nav-items"
             data-testid="product"
-            onMouseOver={() => setDropDownMenu(true)}
-            onMouseLeave={() => setDropDownMenu(false)}
-            onClick={() => dispatch(searchFilter(allProducts))}
+            onClick={() => dispatch(searchFilter(allProducts,false))}
           >
             {Products}
           </Link>
@@ -55,16 +50,6 @@ const NavBar = () => {
             <i className="fa fa-shopping-cart"></i>
           </Link>
         </div>
-
-        {isDropDownMenu && (
-          <div
-          data-testid="product-dropdown"
-            onMouseOver={() => setDropDownMenu(true)}
-            onMouseLeave={() => setDropDownMenu(false)}
-          >
-            <Categories />
-          </div>
-        )}
       </div>
     </React.Fragment>
   );

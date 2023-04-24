@@ -19,10 +19,11 @@ export const fetchDataSuccess = (data: IinfoDataType[]) => {
   };
 };
 
-export const searchFilter =(data: IinfoDataType[]) =>{
+export const searchFilter =(data: IinfoDataType[],isSearching:boolean) =>{
   return{
     type:SERACH_FILTER,
     payload:data,
+    isSearched:isSearching
     
   }
 }

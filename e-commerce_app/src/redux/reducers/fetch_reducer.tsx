@@ -4,6 +4,7 @@ import { FETCH_PRODUCTS, FETCH_DATA_SUCCESS,STORE_FILTERED_PRODUCTS, SERACH_FILT
 export interface myAction {
   type: string;
   payload: IinfoDataType[];
+  isSearched: boolean
 }
 
 export interface myState {
@@ -49,7 +50,7 @@ const productReducer = (state: myState = initialState, action: myAction) => {
         ...state,
         products:action.payload,
         filterProducts: action.payload,
-        isSearching:true  
+        isSearching:action.isSearched
       };
      
     default: {

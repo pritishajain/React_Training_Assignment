@@ -65,16 +65,22 @@ const Title = () => {
     if (
       product.productName.toLowerCase().includes(searchResult) ||
       product.productCategory.toLowerCase().includes(searchResult) ||
-      product.productSubCategory.toLowerCase().includes(searchResult)
+      product.productSubCategory.toLowerCase().includes(searchResult)||
+      product.brand.toLowerCase().includes(searchResult)
     ) {
       return allProducts;
     }
   });
 
   const showList = () => {
-    navigate(`/search/${searchResult}`)
-    dispatch(searchFilter(filteredProducts));
+      navigate(`/search/${searchResult}`)
+      dispatch(searchFilter(filteredProducts,true));
+      setSearchResult("");
   };
+
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
+    setSearchResult(e.target.value.toLowerCase());
+  }
 
   if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname ==='/orderconfirmation') {
     return null;
@@ -98,9 +104,7 @@ const Title = () => {
             type="search"
             placeholder="Search.."
             value={searchResult}
-            onChange={(e) => {
-              setSearchResult(e.target.value.toLowerCase());
-            }}
+            onChange={handleChange}
           ></input>
           <i className="fa fa-paper-plane"
             aria-hidden="true"

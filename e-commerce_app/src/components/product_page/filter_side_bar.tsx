@@ -27,11 +27,7 @@ const FilterSideBar = () => {
 
   const handleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { checked, name, className } = e.target;
-
-      if (className === "hlink") {
-        checked ? dispatch(addCategory(name)) : dispatch(removeCategory(name));
-        
-      } else if (className === "clink") {
+     if (className === "clink") {
         checked ?  dispatch(addSubCategory(name)) : dispatch(removeSubCategory(name));
        
       } else if (className === "blink") {
@@ -42,32 +38,10 @@ const FilterSideBar = () => {
 
   return (
     <React.Fragment>
+      <div className="side-container">
+      <h4>Filters</h4>
       <div className="sidebar">
-        <div className="filter-type">
-          <li className="side-parent">Category Filter</li>
-          <hr />
-
-          <li className="side-child1">
-            <input
-              type="checkbox"
-              className="hlink"
-              name="Kitchen"
-              onChange={handleChecked}
-            ></input>
-            <label>{Kitchen}</label>
-          </li>
-
-          <li className="side-child1">
-            <input
-              type="checkbox"
-              className="hlink"
-              name="Bathroom"
-              onChange={handleChecked}
-            ></input>
-            <label>{Bathroom}</label>
-          </li>
-
-        </div>
+       
         <div className="filter-type">
           <li className="side-parent">Sub-Category Filter</li>
           <hr />
@@ -172,6 +146,7 @@ const FilterSideBar = () => {
           </li>
           
         </div>
+      </div>
       </div>
     </React.Fragment>
   );

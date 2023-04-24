@@ -25,7 +25,7 @@ const OrderConfirmation = () => {
  
   return (
     <React.Fragment>
-      <div className="oc-container" title="order-confirmation">
+      <div className="oc-container" data-testid="order-confirmation">
         <div className="oc-content">
         <i className="fa fa-check-circle"></i>
         <p>{Hey} {userData.fullName}</p>

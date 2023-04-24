@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "../../redux/store";
-import { act,  fireEvent,  getByTitle,  render, screen,} from "@testing-library/react";
+import { act,  fireEvent, render, screen,} from "@testing-library/react";
 import { IinfoDataType } from "../../interface/data_interface";
 import Products from "../../components/product_page/products";
 import { IS_LOGGED_IN, FETCH_DATA_SUCCESS } from "../../redux/action_constants";

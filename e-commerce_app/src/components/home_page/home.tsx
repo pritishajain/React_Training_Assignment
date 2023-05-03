@@ -3,7 +3,6 @@ import HomeCaraousel from "./home_caraousel";
 import "../../assets/css/home.css";
 
 const Home = () => {
-
   return (
     <React.Fragment>
       <HomeCaraousel />     

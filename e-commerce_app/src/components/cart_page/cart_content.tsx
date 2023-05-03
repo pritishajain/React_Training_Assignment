@@ -124,7 +124,6 @@ const CartContent = () => {
   const confirmOrder = async () => {
 
     navigate('/orderconfirmation')
-    
     const querySnapshot = await getDocs(
       query(
         collection(db, "UserInformation"),

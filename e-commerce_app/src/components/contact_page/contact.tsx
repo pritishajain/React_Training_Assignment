@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../../assets/css/contact.css";
 import ContactUserPopUp from "./contact_user_popup";
-import { TalkToUs, Discussion } from "../../assets/constants/constant";
+import { TalkToUs, Discussion, Submit } from "../../assets/constants/constant";
 
 const Contact = () => {
 
@@ -29,7 +29,7 @@ const Contact = () => {
         </div>
 
         <div className="submit-form">
-          <button onClick={()=>setPopUp(true)}>Submit</button>
+          <button onClick={()=>setPopUp(true)}>{Submit}</button>
         </div>
         {popUp && <ContactUserPopUp closePopUp={setPopUp} />}
       </div>

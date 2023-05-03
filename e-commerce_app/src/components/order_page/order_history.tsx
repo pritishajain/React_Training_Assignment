@@ -8,33 +8,39 @@ import { toast } from "react-toastify";
 import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { db } from "../../firebase";
 import { MyOrders, BuyAgain, Delivered } from "../../assets/constants/constant";
+import NotLoginedOrderHistory from "./not_login_order_history";
+import EmptyOrderHistory from "./empty_order_history";
 
 const OrderHistory = () => {
 
-    const dispatch = useDispatch();
-    const userData = useSelector(
-        (state: IuserState) => state.userDataReducer.userData
-      );
-      const handleClick=async (data:IinfoDataType)=>{
+  const isLogIn = useSelector(
+    (state: IuserState) => state.userDataReducer.isLogIn
+  );
 
-        const querySnapshot = await getDocs(
-            query(
-              collection(db, "UserInformation"),
-              where("email", "==", userData.email)
-            )
-          );
-      
-          const docRef = doc(
-            collection(db, "UserInformation"),
-            querySnapshot.docs[0].id
-          );
-      
-          updateDoc(docRef, {
-            cart: [...userData.cart,data],
-          });
-        toast.success("Product Added To Cart");
-        dispatch(addToCart(data))
-      }
+  const userData = useSelector(
+    (state: IuserState) => state.userDataReducer.userData
+  );
+  const dispatch = useDispatch();
+
+  const handleClick = async (data: IinfoDataType) => {
+    const querySnapshot = await getDocs(
+      query(
+        collection(db, "UserInformation"),
+        where("email", "==", userData.email)
+      )
+    );
+
+    const docRef = doc(
+      collection(db, "UserInformation"),
+      querySnapshot.docs[0].id
+    );
+
+    updateDoc(docRef, {
+      cart: [...userData.cart, data],
+    });
+    toast.success("Product Added To Cart");
+    dispatch(addToCart(data));
+  };
 
       const displayOrdersTile=(data:IinfoDataType)=>{
         return(
@@ -57,20 +63,25 @@ const OrderHistory = () => {
       
   return (
     <React.Fragment>
+      {!isLogIn ? (
+        <NotLoginedOrderHistory />
+      ) : userData.orderHistory.length > 0 ? (
         <div className="oh-container">
-            <div className="oh-content">
-                <h1>{MyOrders}</h1>
-                {userData.orderHistory.map((element:IinfoDataType,key:Number)=>
-                  {  key=element.id
-                    return displayOrdersTile(element);
-                  }
-                )}
-
-            </div>
+          <div className="oh-content">
+            <h1>{MyOrders}</h1>
+            {userData.orderHistory.map(
+              (element: IinfoDataType, key: Number) => {
+                key = element.id;
+                return displayOrdersTile(element);
+              }
+            )}
+          </div>
         </div>
-
+      ) : (
+        <EmptyOrderHistory />
+      )}
     </React.Fragment>
-  )
+  );
 };
 
 export default OrderHistory;

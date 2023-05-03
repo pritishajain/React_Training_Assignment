@@ -10,7 +10,7 @@ import kitchen from "../../assets/images/kitchen.jpg";
 import bathroom from "../../assets/images/bathroom.jpg";
 import livingRoom from "../../assets/images/living room.jpg";
 import outdoor from "../../assets/images/outdoor.jpg";
-import { Bathroom, Kitchen } from "../../assets/constants/constant";
+import { Bathroom, Kitchen, NoResultFound, AllProducts, LivingRoom, Outdoor, SearchResults } from "../../assets/constants/constant";
 
 
 interface filteredState {
@@ -31,7 +31,6 @@ const ProductView = (props: { text: string }) => {
 
   const filterProducts = useSelector((state: Istate) => state.productReducer.filterProducts);
   const products = useSelector((state: Istate) => state.productReducer.products);
-  const allProducts = useSelector((state: Istate) => state.productReducer.allProducts);
 
   const categoryName = useSelector(
     (state: filteredState) => state.filterPropertyReducer.category
@@ -121,51 +120,85 @@ const ProductView = (props: { text: string }) => {
     setActive(index);
   };
 
-  console.log(filterProducts);
   return (
     <React.Fragment>
-   
-      <div className= "display-products" data-testid="products" >
-       { props.text != "searchPage" &&
-       <div className="category-container">
-          <div className={active === 0 ? 'active-container' : 'kitchen-container'}  onClick={()=>handleClicked("All Products",0)} >
-            <h3>All Products</h3>
-          </div>
+      <div className="display-products" data-testid="products">
+        {props.text != "searchPage" && (
+          <div className="category-container">
+            <div
+              className={
+                active === 0 ? "active-container" : "kitchen-container"
+              }
+              onClick={() => handleClicked("All Products", 0)}
+            >
+              <h3>{AllProducts}</h3>
+            </div>
 
-          <div className={active === 1 ? 'active-container' : 'kitchen-container'} onClick={()=>handleClicked("Kitchen",1)} >
-            <img src={kitchen}></img>
-            <h3>{Kitchen}</h3>
+            <div
+              className={
+                active === 1 ? "active-container" : "kitchen-container"
+              }
+              onClick={() => handleClicked("Kitchen", 1)}
+            >
+              <img src={kitchen}></img>
+              <h3>{Kitchen}</h3>
+            </div>
+            <div
+              className={
+                active === 2 ? "active-container" : "kitchen-container"
+              }
+              onClick={() => handleClicked("Bathroom", 2)}
+            >
+              <img src={bathroom}></img>
+              <h3>{Bathroom}</h3>
+            </div>
+            <div
+              className={
+                active === 3 ? "active-container" : "kitchen-container"
+              }
+              onClick={() => handleClicked("Livingroom", 3)}
+            >
+              <img src={livingRoom}></img>
+              <h3>{LivingRoom}</h3>
+            </div>
+            <div
+              className={
+                active === 4 ? "active-container" : "kitchen-container"
+              }
+              onClick={() => handleClicked("Outdoor", 4)}
+            >
+              <img src={outdoor}></img>
+              <h3>{Outdoor}</h3>
+            </div>
           </div>
-          <div className={active === 2 ? 'active-container' : 'kitchen-container'}  onClick={()=>handleClicked("Bathroom",2)} >
-            <img src={bathroom}></img>
-            <h3>{Bathroom}</h3>
-          </div>
-          <div className={active === 3 ? 'active-container' : 'kitchen-container'}  onClick={()=>handleClicked("Livingroom",3)} >
-            <img src={livingRoom}></img>
-            <h3>Living room</h3>
-          </div>
-          <div className={active === 4 ? 'active-container' : 'kitchen-container'}  onClick={()=>handleClicked("Outdoor",4)} >
-            <img src={outdoor}></img>
-            <h3>Outdoor</h3>
-          </div>
-        </div>
-}
+        )}
         <div className="show-number">
-       {   props.text != "searchPage" ?  ( <p>{categoryName} : <span className="length">{filterProducts.length} items</span></p> ):
-          (<p> Search Results : <span className="length">{filterProducts.length} items</span></p>)}
-        
+          {props.text != "searchPage" ? (
+            <p>
+              {categoryName} :{" "}
+              <span className="length">{filterProducts.length} items</span>
+            </p>
+          ) : (
+            <p>
+              {" "}
+              {SearchResults}:{" "}
+              <span className="length">{filterProducts.length} items</span>
+            </p>
+          )}
         </div>
-       
 
-        <div className="display-type">
-          <div className="side">
-            <FilterSideBar />
+        {filterProducts.length === 0 ? (
+          <h1>{NoResultFound}</h1>
+        ) : (
+          <div className="display-type">
+            <div className="side">
+              <FilterSideBar />
+            </div>
+            <div className="main-products">
+              <ProductTile list={filterProducts} />
+            </div>
           </div>
-          <div className="main-products">
-            <ProductTile list={filterProducts}/>
-            {/* list={props.text === "searchPage" ? filterProducts : allProducts} */}
-          </div>
-        </div>
+        )}
       </div>
     </React.Fragment>
   );

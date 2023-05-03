@@ -107,7 +107,7 @@ h1{
 .kitchen-container img{   
     width: 200px;
     height: 70px;
-    border-radius: 50%; 
+  
 }
 .kitchen-container h3{
     margin: 0;
@@ -131,7 +131,7 @@ h1{
 .active-container img{   
     width: 200px;
     height: 70px;
-    /* border-radius: 30%; */
+ 
 }
 .active-container h3{
     margin: 0;
@@ -143,7 +143,6 @@ h1{
 }
 .show-number{
     text-align: center;
-    /* margin-left: 20px; */
     font-size: 20px;
     font-weight: 600;
 }

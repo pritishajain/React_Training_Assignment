@@ -84,6 +84,16 @@ export const Delivered: string = "Delivered";
 export const PleaseSignIn: string = "PLEASE SIGN IN";
 export const ViewWishList: string = "Signin to view items in your WishList";
 export const MyWishList: string = "My WishList";
-
-
+export const ViewOrders: string = "Signin to view your Orders";
+export const OrderIsEmpty: string = "You haven't place any order yet";
+export const Submit: string = "Submit";
+export const SubCategoryFilter: string = "Sub-Category Filter";
+export const PriceFilter: string = "Price Filter";
+export const BrandFilter: string = "Brand Filter";
+export const Filters: string = "Filters";
+export const SearchResults: string = "Search Results";
+export const LivingRoom: string = "Living Room";
+export const Outdoor: string = "Outdoor";
+export const AllProducts: string = "All Products";
+export const NoResultFound: string = "No Result Found";
 

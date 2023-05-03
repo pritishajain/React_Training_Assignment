@@ -81,7 +81,11 @@ const Login = () => {
           navigate("/cart");
           localStorage.removeItem("userData");
 
-        } else {
+        } else if(userSavedData.type ==="orders"){
+          navigate("/orderhistory");
+          localStorage.removeItem("userData");
+        }
+        else {
           navigate("/");
         }   
       })

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import Slider from "@mui/material/Slider";
-import { removeBrandCategory, removeCategory, removeSubCategory } from "../../redux/actions/fetch_action";
-import { addBrandCategory, addCategory, addSubCategory, priceFilter } from "../../redux/actions/fetch_action";
-import { Kitchen, Bathroom, Faucets, Shower, Sink, Tiles, Cera, Dsons, Hindware, Jaguar } from "../../assets/constants/constant";
+import { removeBrandCategory, removeSubCategory } from "../../redux/actions/fetch_action";
+import { addBrandCategory, addSubCategory, priceFilter } from "../../redux/actions/fetch_action";
+import { Filters, SubCategoryFilter, BrandFilter, PriceFilter, Faucets, Shower, Sink, Tiles, Cera, Dsons, Hindware, Jaguar } from "../../assets/constants/constant";
 import "../../assets/css/filter_side_bar.css";
 
 const FilterSideBar = () => {
@@ -39,11 +39,11 @@ const FilterSideBar = () => {
   return (
     <React.Fragment>
       <div className="side-container">
-      <h4>Filters</h4>
+      <h4>{Filters}</h4>
       <div className="sidebar">
        
         <div className="filter-type">
-          <li className="side-parent">Sub-Category Filter</li>
+          <li className="side-parent">{SubCategoryFilter}</li>
           <hr />
 
           <li className="side-child2">
@@ -88,7 +88,7 @@ const FilterSideBar = () => {
         </div>
 
         <div className="filter-type">
-          <li className="side-parent">Price Filter</li>
+          <li className="side-parent">{PriceFilter}</li>
           <hr />
           <div style={{ width: "150px", padding: "20px" }}>
             <Slider
@@ -102,7 +102,7 @@ const FilterSideBar = () => {
         </div>
 
         <div className="filter-type">
-          <li className="side-parent">Brand Filter</li>
+          <li className="side-parent">{BrandFilter}</li>
           <hr />
 
           <li className="side-child1">

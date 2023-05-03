@@ -17,9 +17,7 @@ export const firestoreMiddleware: Middleware =
 
         store.dispatch(fetchDataSuccess(products));
       } catch (error) {
-        
       }
     }
-
     return next(action);
   };

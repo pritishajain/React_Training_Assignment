@@ -11,7 +11,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { IuserState } from "../../interface/product_reducer_interface";
 import Pagination from "./pagination";
 
-
  export const dataInfo = {
   id: 0,
   imageUrl: "",
@@ -23,7 +22,6 @@ import Pagination from "./pagination";
   brand: "",
   qty:1
 };
-
 
 const ProductTile = (props: { list: IinfoDataType[] }) => {
 
@@ -175,23 +173,19 @@ const ProductTile = (props: { list: IinfoDataType[] }) => {
   };
 
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [productsPerPage, setProductsPerPage] = useState<number>(12);
+  const productsPerPage= 12;
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
 
   const currentProducts = props.list.slice(indexOfFirstProduct, indexOfLastProduct);
-  
-  // const pageNumbers = [];
-  // for (let i = 1; i <= Math.ceil(props.list.length / productsPerPage); i++) {
-  //   pageNumbers.push(i);
-  // }
 
    const paginate = (pageNumber:number) => setCurrentPage(pageNumber);
 
   return (
     <React.Fragment>
       <div className="productTile" >
+
         {currentProducts.map((value: IinfoDataType, key: number) => {
           key = value.id;
           return displayProductTile(value);

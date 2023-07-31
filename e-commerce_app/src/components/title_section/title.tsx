@@ -86,6 +86,10 @@ const Title = () => {
     return null;
   }
 
+  const handleProfileClick = () => {
+    setDropDownMenu((prevState) => !prevState);
+  };
+
   return (
     <React.Fragment>
       <div className="head" data-testid="titleHead">
@@ -117,9 +121,8 @@ const Title = () => {
           <i className="fa fa-user" aria-hidden="true"></i>
           <div
             className="user"
-            onMouseOver={() => setDropDownMenu(true)}
-            onMouseLeave={() => setDropDownMenu(false)}
             data-testid="hover"
+            onClick={handleProfileClick}
           >
             {isLogIn && userData.fullName}
             {!isLogIn && Profile}
@@ -128,9 +131,9 @@ const Title = () => {
         </div>
         {isDropDownMenu && (
           <div
-            onMouseOver={() => setDropDownMenu(true)}
-            onMouseLeave={() => setDropDownMenu(false)}
             data-testid="dropdown"
+            onClick={handleProfileClick}
+            
           >
             <Menu isLoggedIn={isLogIn} handleLogOut={handleLogOut} />
           </div>

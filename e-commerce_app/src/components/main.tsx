@@ -7,7 +7,7 @@ import NavBar from "./navbar_section/navBar";
 import Title from "./title_section/title";
 import Footer from "./home_page/footer";
 import Loading from "./loading_comp/loading";
-import ErrorBoundary from "./error_boundary";
+
 import ErrorPage from "./error_page/error_page";
 
 const wait=(time: number)=>{
@@ -42,17 +42,17 @@ const Main = () => {
       <NavBar />
       <Suspense fallback={<Loading />}>
         <Routes>
-          <Route path="/" element={<ErrorBoundary> <Home /> </ErrorBoundary>} />
-          <Route path="signup" element={<ErrorBoundary> <SignUp /> </ErrorBoundary>} />
-          <Route path="login" element={<ErrorBoundary> <Login /> </ErrorBoundary>} />
-          <Route path="products" element={ <ErrorBoundary> <Products /> </ErrorBoundary>} />
-          <Route path="search/:keyword" element={<ErrorBoundary> <Products /> </ErrorBoundary>} />
-          <Route path="account" element={<ErrorBoundary> <Account /> </ErrorBoundary>} />
-          <Route path="wishlist" element={<ErrorBoundary> <Wishlist /> </ErrorBoundary>} />
-          <Route path="cart" element={<ErrorBoundary> <Cart /> </ErrorBoundary>} />
-          <Route path="contact" element={<ErrorBoundary> <Contact /> </ErrorBoundary>} />
-          <Route path="orderconfirmation" element={<ErrorBoundary> <OrderConfirmation /> </ErrorBoundary>} />
-          <Route path="orderhistory" element={<ErrorBoundary> <OrderHistory /> </ErrorBoundary>} />
+          <Route path="/" element={ <Home /> } />
+          <Route path="signup" element={<SignUp /> } />
+          <Route path="login" element={ <Login /> } />
+          <Route path="products" element={ <Products /> } />
+          <Route path="search/:keyword" element={<Products /> } />
+          <Route path="account" element={<Account /> } />
+          <Route path="wishlist" element={<Wishlist /> } />
+          <Route path="cart" element={<Cart /> } />
+          <Route path="contact" element={<Contact /> } />
+          <Route path="orderconfirmation" element={<OrderConfirmation /> } />
+          <Route path="orderhistory" element={ <OrderHistory /> } />
           <Route path="*" element={<ErrorPage/>} />
         </Routes>
       </Suspense>
